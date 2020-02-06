@@ -70,5 +70,5 @@ gem 'rspec-rails'
 gem "jquery-rails"
 gem 'ransack'
 gem 'cancancan'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'pry-rails'
