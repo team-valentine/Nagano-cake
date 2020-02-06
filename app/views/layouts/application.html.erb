@@ -10,6 +10,96 @@
   </head>
 
   <body>
+
+     <header class="navbar navbar-fixed-top">
+          <div class="container">
+                <nav class="nav navbar-nav navbar-left">
+                  <h2>ながのCAKE</h2>
+                </nav>
+               <ul class="nav navbar-nav navbar-right">
+                 <% if customer_signed_in? %>
+                    <li class="list-item">
+                      <%= link_to root_path do %>
+                      <%= 'Home' %>
+                      <% end %>
+                    </li>
+                    <li class="list-item">
+                      <%= link_to about_path do %>
+                      <%= 'About' %>
+                      <% end %>
+                    </li>
+
+                    <li class="list-item">
+                      <%= link_to cart_items_path do %>
+                      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                      <%= 'Cart' %>
+                      <% end %>
+                    </li>
+
+                    <li class="list-item">
+                      <%= link_to customer_path(current_customer.id) do %>
+                      <%= 'My page' %>
+                      <% end %>
+                    </li>
+
+                    <li class="list-item">
+                      <%= link_to destroy_customer_session_path, method: :delete do %>
+                      <%= "logout" %>
+                      <% end %>
+                    </li>
+
+
+                 <% elsif admin_signed_in? %>
+
+                  <li class="list-item">
+                    <%= link_to admins_items_path do %>
+                    <%= "商品一覧" %>
+                    <% end %>
+                  </li>
+                  <li class="list-item">
+                   <%= link_to admins_customers_path do %>
+                    <%= "会員一覧" %>
+                  <% end %>
+                  </li>
+                  <li class="list-item">
+                    <%= link_to admins_orders_path do %>
+                    <%= "注文履歴一覧" %>
+                    <% end %>
+                  </li>
+                  <li class="list-item">
+                    <%= link_to admins_genres_path do %>
+                    <%= "ジャンル管理" %>
+                    <% end %>
+                  </li>
+
+                 <% else %>
+
+                  <li class="list-item">
+                    <%= link_to root_path do %>
+                    <%= "Home" %>
+                    <% end %>
+                  </li>
+                  <li class="list-item">
+                   <%= link_to about_path do %>
+                    <%= "About" %>
+                  <% end %>
+                  </li>
+                  <li class="list-item">
+                    <%= link_to new_customer_session_path do %>
+                    <%= "Log in" %>
+                    <% end %>
+                  </li>
+                  <li class="list-item">
+                    <%= link_to new_customer_registration_path do %>
+                    <%= "Sign up" %>
+                    <% end %>
+                  </li>
+                 <% end %>
+
+                </ul>
+              </div>
+       </header>
+
     <%= yield %>
   </body>
 </html>
