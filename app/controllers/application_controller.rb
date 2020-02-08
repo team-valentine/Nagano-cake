@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	before_action :configure_permitted_parameters, if: :devise_controller?
+	protected
+	def configure_permitted_parameters
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname, :firstname, :kana_lastname, :kana_firstname, :postal_code, :address, :phone_number])
+	end
+
+	before_action :authenticate_customer!
+
+
 end
