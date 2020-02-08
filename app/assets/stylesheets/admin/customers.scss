@@ -1,3 +1,36 @@
 // Place all the styles related to the admin::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+input[type="email"] {
+        width: 350px;
+        height: 25px;
+    }
+
+input[type="password"] {
+        width: 350px;
+        height: 25px;
+    }
+
+h4 span {
+	background-color: rgba( 128, 128, 128, 0.4 );
+	padding: 0 10px;
+}
+
+.signup {
+	margin-top: 60px;
+}
+
+.field {
+	margin: 10px;
+}
+
+.signup .row {
+	margin-bottom: 20px;
+}
+
+header .list-item {
+    font-size: 18px;
+    padding: 5px 35px;
+}
