@@ -3,7 +3,7 @@
 
 	<h3>マイページ</h3>
 
-　　<h3 style="font-weight: bold", class="">登録情報 <%= link_to "編集する", "edit_customer_path()" ,class:'btn btn-primary' %><%= link_to "パスワードを変更する", "edit_customer_password_path" ,class:'btn btn-primary ' %>
+　　<h3 style="font-weight: bold", class="">登録情報 <%= link_to "編集する",  edit_customer_registration_path ,class:'btn btn-primary' %><%= link_to "パスワードを変更する", "edit_customer_password_path" ,class:'btn btn-primary ' %>
 	</h3>
 
 
@@ -11,23 +11,25 @@
 		<tbody class="row">
 			<tr class="">
 				<td class="active col-xs-3">氏名</td>
-				<td></td>
+				<td><%= @customer.lastname %></td>
+				<td><%= @customer.firstname %></td>
 			</tr>
 			<tr>
 				<td class="active">カナ</td>
-				<td></td>
+				<td><%= @customer.kana_lastname %></td>
+				<td><%= @customer.kana_firstname %></td>
 			</tr>
 			<tr>
 				<td class="active">郵便番号</td>
-				<td></td>
+				<td><%= @customer.postal_code %></td>
 			</tr>
 			<tr>
 				<td class="active">住所</td>
-				<td></td>
+				<td><%= @customer.address %></td>
 			</tr>
 			<tr>
 				<td class="active">電話番号</td>
-				<td></td>
+				<td><%= @customer.phone_number %></td>
 			</tr>
 			<tr>
 				<td class="active">メールアドレス</td>
