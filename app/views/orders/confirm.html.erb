@@ -1,2 +1,60 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<h1>注文情報確認</h1>
+
+<%= form_for(@order, url: order_path(@order),html: {method: :post}) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<table class="table table-bordered table-hover container">
+	<tbody class="row">
+		<tr class="">
+			<td class="active col-xs-3">氏名</td>
+			<td><%= @customer.lastname %></td>
+			<td><%= @customer.firstname %></td>
+		</tr>
+		<tr>
+			<td class="active">カナ</td>
+			<td><%= @customer.kana_lastname %></td>
+			<td><%= @customer.kana_firstname %></td>
+		</tr>
+		<tr>
+			<td class="active">郵便番号</td>
+			<td><%= @customer.postal_code %></td>
+		</tr>
+		<tr>
+			<td class="active">住所</td>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<td class="active">電話番号</td>
+			<td><%= @customer.phone_number %></td>
+		</tr>
+		<tr>
+			<td class="active">メールアドレス</td>
+			<td><%= @customer.email %></td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="table table-bordered table-hover container">
+	<tbody class="row">
+		<tr class="">
+			<td class="active col-xs-3">氏名</td>
+			<td><%= @customer.lastname %></td>
+			<td><%= @customer.firstname %></td>
+		</tr>
+		<tr>
+			<td class="active">カナ</td>
+			<td><%= @customer.kana_lastname %></td>
+			<td><%= @customer.kana_firstname %></td>
+		</tr>
+	</tbody>
+</table>
+<%= f.submit '購入を確定する',class: "btn btn-primary" %>
+
+<% end %>
+
+
+
+
+
+
+
