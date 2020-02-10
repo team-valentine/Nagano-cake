@@ -1,2 +1,62 @@
-<h1>会員編集画面</h1>
+<div class="container">
 
+	<h2><b>会員編集画面</b></h2>
+
+	<%= form_for(@customer, url: admins_customer_path(@customer),html: {method: :put}) do |f| %>
+
+
+	<div class="row">
+		<table class="col-md-offset-1">
+			<tbody>
+				<tr>
+					<th class="col-md-2">会員ID</th>
+					<td class="col-md-6"><%= @customer.id %></td>
+				</tr>
+				<tr>
+					<th class="col-md-2">氏名</th>
+					<td>
+						<%= f.text_field :lastname, class: 'col-md-3' %>
+						<%= f.text_field :firstname, class: 'col-md-3' %>
+					</td>
+				</tr>
+				<tr>
+					<th class="col-md-2">フリガナ</th>
+					<td>
+						<%= f.text_field :kana_lastname, class: 'col-md-3' %>
+						<%= f.text_field :kana_firstname, class: 'col-md-3' %>
+					</td>
+				</tr>
+				<tr>
+					<th class="col-md-2">郵便番号</th>
+					<td><%= f.text_field :postal_code, class: 'col-md-3' %></td>
+				</tr>
+				<tr>
+					<th class="col-md-2">住所</th>
+					<td><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'col-md-12' %></td>
+				</tr>
+				<tr>
+					<th class="col-md-2">電話番号</th>
+					<td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'col-md-5' %>
+					</td>
+				</tr>
+				<tr>
+					<th class="col-md-2">メールアドレス</th>
+					<td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'col-md-5' %></td>
+				</tr>
+				<tr>
+					<th class="col-md-2">会員ステータス</th>
+					<td><%= f.radio_button :status, true %>
+						<%= f.label :status, "有効" %>
+						<%= f.radio_button :status, false %>
+						<%= f.label :status, "退会済み" %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<%= f.submit '変更内容を保存する',class: "btn btn-primary" %>
+	</div>
+
+	<% end %>
+</div>
