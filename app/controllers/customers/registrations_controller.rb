@@ -15,14 +15,18 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
+  #  def edit
+  #   @customer=Customer.find(params[:id])
+  # #   super
   # end
 
   # PUT /resource
   # def update
-  #   super
-  # end
+  #   @customer=Customer.find(params[:id])
+  #   # @customer.update(customer_params)
+  #   redirect_to customer_path(customer.id)
+  # #   super
+  #  end
 
   # DELETE /resource
   # def destroy

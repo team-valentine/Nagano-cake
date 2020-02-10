@@ -20,6 +20,7 @@ class Admins::GenresController < ApplicationController
   	redirect_to admins_genres_path
   end
 
+
   private
   def genre_params
   	params.require(:genre).permit(:name,:status)

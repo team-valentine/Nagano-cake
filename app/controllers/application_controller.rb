@@ -19,9 +19,34 @@ class ApplicationController < ActionController::Base
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname, :firstname, :kana_lastname, :kana_firstname, :postal_code, :address, :phone_number])
+		devise_parameter_sanitizer.permit(:account_update, keys: [:lastname, :firstname, :kana_lastname, :kana_firstname, :postal_code, :address, :phone_number])
 	end
-
-	before_action :authenticate_customer!
-
-
 end
+# 	  private
+#   def customer_params
+#       params.require(:customer).permit(:lastname, :firstname, :kana_astname, :kana_firstname, :postal_code, :address, :phone_number, :email, :status)
+#   end
+#   protected
+#   # 追記する
+#   # 追記する
+#   def update_resource(resource, params)
+#     resource.update_without_password(params)
+#   end
+# end
+
+<<<<<<< HEAD
+	
+=======
+>>>>>>> master
+
+
+# end
+
+
+#   protected
+
+#   def configure_permitted_parameters
+#     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+#     devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
+    
+#   end
