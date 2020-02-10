@@ -13,7 +13,10 @@ class CustomersController < ApplicationController
   	  @customer =Customer.find(params[:id])
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
   def edit
     @customer =Customer.find(params[:id])
   end
