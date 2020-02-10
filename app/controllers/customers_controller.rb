@@ -13,6 +13,15 @@ class CustomersController < ApplicationController
   	  @customer =Customer.find(params[:id])
   end
 
+  def edit
+    @customer =Customer.find(params[:id])
+  end
+
+  def update
+     @customer =Customer.find(params[:id])
+     @customer.update(customer_params)
+  end
+
    private
   def customer_params
   	  params.require(:customer).permit(:lastname, :firstname, :kana_astname, :kana_firstname, :postal_code, :address, :phone_number, :email, :status)

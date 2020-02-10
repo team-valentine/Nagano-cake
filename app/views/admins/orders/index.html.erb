@@ -1,2 +1,35 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<h1>注文一覧画面</h1>
+<table class="table thead-light">
+	<thead>
+		<tr>
+		   <th class="col-xs-3 active">購入日時</<th>
+		   <th class="col-xs-3 active">購入者</th>
+		    <th class="col-xs-3 active">注文個数</th>
+		    <th class="col-xs-3 active">注文ステータス</th>
+		</tr>
+    </thead>
+<!-- 
+    <tbody>
+	  <%# @oder.each do |order| %>
+		 <tr>
+		   <tr><%= order.timesstamps %></tr>
+		   <tr><%= order.customer_id %></tr>
+		   <tr><%= order.billing_amount %></tr>
+		   <tr><%= order.status %></tr>
+		 </tr>
+	  <%# end %>
+    </tbody> -->
+
+</table>
+
+<%= will_paginate @orders %>
+
+<!-- 
+     t.integer :customer_id
+      t.integer :shipping_fee
+      t.integer :billing_amount
+      t.integer :payment_method
+      t.string :postal_code
+      t.string :address
+      t.string :name
+      t.integer :status -->
