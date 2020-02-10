@@ -6,8 +6,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.integer :tax_excluded_price
-      t.string :imane_id
-      t.integer :status
+      t.string :image_id
+      t.integer :status, default: 1, null: false, limit: 1
       t.timestamps
     end
   end
