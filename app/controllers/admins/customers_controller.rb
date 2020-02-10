@@ -10,10 +10,7 @@ class Admins::CustomersController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
-=======
 
->>>>>>> master
   end
 
 end

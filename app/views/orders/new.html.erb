@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h3>購入情報入力test1</h3>
+			<h3>購入情報入力</h3>
+
 
 			<%= form_for(@order) do |f| %>
 			<h3>支払方法</h3>
@@ -17,7 +18,9 @@
 
 			<%= f.radio_button :status, :false %>
 			<%= f.label :customer_id, "登録先住所から選択" %>
-			<%= f.collection_select :address, :order.address, :include_blank => true %>
+			<%#= f.collection_select :address, :order.address, :include_blank => true %>
+			  <%#= f.select :address_id,Address.address_id.keys, :id, :name %>
+
 			<%#= f.select :address ,include_blank: => true %><br>
 
 			<%= f.radio_button :status, :false %>
@@ -64,7 +67,8 @@
 </div>
 
 
-<!------
+<!--
+
       t.integer :customer_id
       t.integer :shipping_fee
       t.integer :billing_amount

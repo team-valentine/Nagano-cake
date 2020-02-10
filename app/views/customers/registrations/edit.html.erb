@@ -7,7 +7,6 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: {method: :put}) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
       <table class="table table-bordered">
-
          <tr>
            <div class="field">
              <th class="col-xs-3 active"><%= f.label :氏名 %></th>
@@ -63,18 +62,10 @@
        <div class="text-center">
         <%#= f.submit '変更内容を保存する', customer_path(current_customer), class: "btn btn-primary" %>
         <%= f.submit '変更内容を保存する',class: "btn btn-primary" %>
-<<<<<<< HEAD
     </div>
 
     <% end %>
 
-=======
-    </div>
-
-    <% end %>
-
-    </div>
->>>>>>> master
   </div>
 </div>
 
