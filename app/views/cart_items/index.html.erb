@@ -1,2 +1,36 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>ショッピングカート</h1>
+			<%= link_to 'カートを空にする', new_order_path, method: :destroy_all, class: "btn btn-danger" %>
+
+			<%= form_for(@cart_item, url: new_order_path(@cart_item), method: :post) do |f| %>
+			 <table class="table table-borderd">
+				<thead>
+					<tr>
+						<th class="col-xs-3 active">商品名</<th>
+							<th class="col-xs-3 active">単価(税込)</th>
+							<th class="col-xs-3 active">数量</th>
+							<th class="col-xs-3 active">小計</th>
+							<th class="col-xs-3 active"></th>
+						</tr>
+				</thead>
+
+				<tbody>
+						<% @cart_items.each do |f| %>
+						<tr>
+							<td><%= f.label :customer  %></td><!-- 商品名 -->
+							<td><%= f.label :item_id   %></td>
+							<td><%= f.label :quantity  %></td>
+							<td><%= f.label :quantity  %></td>
+							<td><%= link_to '削除する', cart_item_path(@cart_item), method: :delete, class: "btn btn-danger" %></td>
+						</tr>
+						<% end %>
+				</tbody>
+			  </table>
+			<% end %>
+			<%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+			<%= link_to '情報入力に進む', new_order_path, method: :post, class: "btn btn-primary" %>
+		</div>
+	</div>
+</div>
