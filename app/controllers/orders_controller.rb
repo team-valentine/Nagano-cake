@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    @order=Order.new
   end
 
   def complete
