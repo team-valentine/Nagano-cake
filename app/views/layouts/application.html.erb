@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,92 +11,74 @@
 
   <body>
 
-     <header class="navbar navbar-fixed-top">
+     <header class="navbar navbar-default navbar-fixed-top">
           <div class="container">
-                <nav class="nav navbar-nav navbar-left">
-                  <h2>ながのCAKE</h2>
+                <nav class="nav navbar-nav">
+                    <h2>ながのCAKE</h2>
                 </nav>
-               <ul class="nav navbar-nav navbar-right">
-                 <% if customer_signed_in? %>
-                    <li class="list-item">
-                      <%= link_to root_path do %>
-                      <%= 'Home' %>
-                      <% end %>
-                    </li>
-                    <li class="list-item">
-                      <%= link_to about_path do %>
-                      <%= 'About' %>
-                      <% end %>
-                    </li>
+                <div class="collapse navbar-collapse" id="Navber">
+                   <ul class="nav navbar-nav navbar-right">
+                     <% if customer_signed_in? %>
+                        <div class="row">
+                          <li class="list-item col-md-offset-4 col-md-4">
+                            <%= link_to_unless_current "Home", root_path %>
+                          </li>
+                          <li class="list-item col-md-4">
+                            <%= link_to_unless_current "About", about_path  %>
+                          </li>
+                        </div>
+                        <div class="row">
+                          <li class="list-item col-md-4">
+                            <% body = capture do %>
+                                <p><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart</p>
+                              <% end %>
+                              <%= link_to_unless_current body, cart_items_path %>
+                          </li>
 
-                    <li class="list-item">
-                      <%= link_to cart_items_path do %>
-                      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                      <%= 'Cart' %>
-                      <% end %>
-                    </li>
+                          <li class="list-item col-md-4">
+                            <%= link_to_unless_current "MyPage", customer_path(current_customer.id) %>
+                          </li>
 
-                    <li class="list-item">
-                      <%= link_to customer_path(current_customer.id) do %>
-                      <%= 'My page' %>
-                      <% end %>
-                    </li>
+                          <li class="list-item col-md-4">
+                            <%= link_to_unless_current "Logout", destroy_customer_session_path, method: :delete %>
+                          </li>
+                        </div>
+                        <div class="row">
+                          <p class="col-md-offset-4"><%= current_customer.lastname %>さんがログインしています。</p>
+                        </div>
 
-                    <li class="list-item">
-                      <%= link_to destroy_customer_session_path, method: :delete do %>
-                      <%= "logout" %>
-                      <% end %>
-                    </li>
+                     <% elsif admin_signed_in? %>
 
+                        <li class="list-item">
+                          <%= link_to "商品一覧", admins_items_path %>
+                        </li>
+                        <li class="list-item">
+                         <%= link_to "会員一覧", admins_customers_path %>
+                        </li>
+                        <li class="list-item">
+                          <%= link_to "注文履歴一覧", admins_orders_path %>
+                        </li>
+                        <li class="list-item">
+                          <%= link_to "ジャンル管理", admins_genres_path %>
+                        </li>
 
-                 <% elsif admin_signed_in? %>
+                     <% else %>
 
-                  <li class="list-item">
-                    <%= link_to admins_items_path do %>
-                    <%= "商品一覧" %>
-                    <% end %>
-                  </li>
-                  <li class="list-item">
-                   <%= link_to admins_customers_path do %>
-                    <%= "会員一覧" %>
-                  <% end %>
-                  </li>
-                  <li class="list-item">
-                    <%= link_to admins_orders_path do %>
-                    <%= "注文履歴一覧" %>
-                    <% end %>
-                  </li>
-                  <li class="list-item">
-                    <%= link_to admins_genres_path do %>
-                    <%= "ジャンル管理" %>
-                    <% end %>
-                  </li>
-
-                 <% else %>
-
-                  <li class="list-item">
-                    <%= link_to root_path do %>
-                    <%= "Home" %>
-                    <% end %>
-                  </li>
-                  <li class="list-item">
-                   <%= link_to about_path do %>
-                    <%= "About" %>
-                  <% end %>
-                  </li>
-                  <li class="list-item">
-                    <%= link_to new_customer_session_path do %>
-                    <%= "Log in" %>
-                    <% end %>
-                  </li>
-                  <li class="list-item">
-                    <%= link_to new_customer_registration_path do %>
-                    <%= "Sign up" %>
-                    <% end %>
-                  </li>
-                 <% end %>
-
-                </ul>
+                        <li class="list-item">
+                          <%= link_to "Home", root_path %>
+                        </li>
+                        <li class="list-item">
+                         <%= link_to "About", about_path %>
+                        </li>
+                        <li class="list-item">
+                          <%= link_to "Login", new_customer_session_path %>
+                        </li>
+                        <li class="list-item">
+                          <%= link_to "Signup", new_customer_registration_path %>
+                        </li>
+                       <% end %>
+                    </ul>
+                  </div>
               </div>
        </header>
 
