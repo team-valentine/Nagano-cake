@@ -23,7 +23,7 @@
           <% @items.each do |item| %>
             <tr>
               <td class="col-md-1"><%= item.id %></td>
-              <td class="col-md-3"><u><%= item.name %></u></td>
+              <td class="col-md-3"><%=link_to item.name, admins_item_path(item.id) %></u></td>
               <td class="col-md-1"><%= item.tax_excluded_price %></td>
               <td class="col-md-2"><%= item.genre.name %></td>
               <td class="col-md-1"><%= item.status %></td>
@@ -37,4 +37,3 @@
     </div>
   </div>
 </div>
-
