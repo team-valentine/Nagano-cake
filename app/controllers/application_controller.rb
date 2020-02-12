@@ -34,11 +34,6 @@ end
 #   end
 # end
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> master
-
 
 # end
 

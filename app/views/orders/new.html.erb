@@ -15,28 +15,27 @@
 
 			<%= f.radio_button :status, :true %>
 			<%= f.label :customer_id, "ご自身の住所" %><br>
+			<%= @customer.address %><br>
 
 			<%= f.radio_button :status, :false %>
-			<%= f.label :customer_id, "登録先住所から選択" %>
-			<%#= f.collection_select :address, :order.address, :include_blank => true %>
-			  <%#= f.select :address_id,Address.address_id.keys, :id, :name %>
-
-			<%#= f.select :address ,include_blank: => true %><br>
+			<%= f.label :customer_id, "登録先住所から選択" %><br>
+			<%= f.select :address,@customer.deliveries.all.map { |ship| [ship.adress] }, class: 'col-xs-8' %><br>
 
 			<%= f.radio_button :status, :false %>
 			<%= f.label :customer_id, "新しいお届け先" %><br>
 
-			<table class="table table-bordered">
+			<table class="table">
 				<tr>
 					<div class="field">
-						<th class="col-xs-3 active"><%= f.label :郵便番号 %></th>
-						<td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'col-xs-4' %></td>
+						<th><%= f.label :郵便番号 %></th>
+						<td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: 'col-xs-4' %>ハイフンなし
+						</td>
 					</div>
 				</tr>
 
 				<tr>
 					<div class="field">
-						<th class="col-xs-3 active"><%= f.label :住所 %></th>
+						<th class="col-xs-3"><%= f.label :住所 %></th>
 						<div class="col-xs-9">
 							<td><%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'col-xs-8' %></td>
 						</div>

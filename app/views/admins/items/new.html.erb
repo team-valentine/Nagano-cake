@@ -2,10 +2,12 @@
 
    <h3 style="margin-bottom:80px"><b>商品 新規登録画面</b></h3>
 
+
+   <%= form_for(@item, url:admins_items_path, method: :post) do |f| %>
+
     <div class="row">
 
         <div class="col-md-4">
-        <%= form_for(@item, url:admins_items_path, method: :post) do |f| %>
 
             <%= f.attachment_field :image%>
 

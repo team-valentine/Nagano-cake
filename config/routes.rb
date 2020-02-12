@@ -7,15 +7,17 @@ Rails.application.routes.draw do
     passwords: 'customers/passwords'
   }
 
-  get 'orders/:id/confirm', to: 'orders#confirm'
-  get 'orders/complete', to: 'orders#complete'
-  resources :customers, :deliveries, :orders, :cart_items, :items
-
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions'
   }
 
+  get 'orders/:id/confirm', to: 'orders#confirm'
+  get 'orders/complete', to: 'orders#complete'
+  resources :customers, :deliveries, :orders,  :items
+  resources :cart_items 
+  delete 'cart_items_destroy_all' => 'cart_items#destroy_all',as: 'cart_items_destroy_all'
+ 
   root 'customers#top'
 
   get 'about', to: 'customers#about'
