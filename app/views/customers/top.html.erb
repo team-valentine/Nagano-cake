@@ -1,2 +1,137 @@
-<h1>Customers#top</h1>
-<p>Find me in app/views/customers/top.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div style="height: 400px; margin-bottom: 30px; position: relative">
+		    <div class="theTarget">
+				<div style="background-image:url(<%= asset_path "test1.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "test2.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "test3.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "test4.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "test5.jpg" %>)"></div>
+		    </div>
+		    <h2 style="
+					color: #fff;
+					letter-spacing: 0.25em;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">Welcome to Nagano Cake</h2>
+		</div>
+
+		<div class="row" style="text-align: center; margin-bottom: 30px;">
+		  	<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'width: 100%;' %>
+				<h3 style="
+					color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">商品一覧へ</h3>
+	        </div>
+
+			<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<h3 style="
+				    color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">ケーキ</h3>
+			</div>
+
+			<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<h3 style="
+				    color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">焼き菓子</h3>
+			</div>
+
+		</div>
+		<div class="row" style="text-align: center;">
+
+			<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<h3 style="
+					color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">プリン</h3>
+			</div>
+
+			<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<h3 style="
+					color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				">キャンディ</h3>
+			</div>
+
+			<div style="position: relative;" class="col-md-4">
+				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<h3 style="
+					color: #333;
+					position: absolute;
+					top: 0%;
+					left: 50%;
+					-ms-transform: translate(-50%, -50%);
+					-webkit-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+				"></h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+//Skipprの初期化
+$("document").ready(function() {
+    $(".theTarget").skippr();
+});
+
+// オプションを指定してSkipprの実行
+$(".theTarget").skippr({
+    // スライドショーの変化（"fade" or "slide"）
+    transition : 'fade',
+    // 変化にかかる時間（ミリ秒）
+    speed : 1000,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形（"block" or "bubble"）
+    navType : 'block',
+    // 子要素の種類（"div" or "img"）
+    childrenElementType : 'div',
+    // ナビゲーション矢印の表示（trueで表示）
+    arrows : true,
+    // スライドショーの自動再生（falseで自動再生なし）
+    autoPlay : true,
+    // 自動再生時のスライド切替間隔（ミリ秒）
+    autoPlayDuration : 4000,
+    // キーボードの矢印キーによるスライド送りの設定（trueで有効）
+    keyboardOnAlways : true,
+    // 1枚目のスライド表示時に戻る矢印を表示するかどうか（falseで非表示）
+    hidePrevious : false
+});
+</script>

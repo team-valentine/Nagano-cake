@@ -18,7 +18,7 @@
 					<tr class="line">
 						<td class="col-md-2"><%= customer.id %></td>
 						<td  class="col-md-3">
-							<%=link_to admins_customer_path(customer) do, class: 'border' %>
+							<%=link_to admins_customer_path(customer) do %>
 								<%= customer.lastname %>
 								<%= customer.firstname %>
 							<% end %>
