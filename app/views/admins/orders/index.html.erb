@@ -1,36 +1,24 @@
-<h1>注文一覧画面</h1>
-<table class="table thead-light">
-	<thead>
-		<tr>
-		   <th class="col-xs-3 active">購入日時</<th>
-		   <th class="col-xs-3 active">購入者</th>
-		    <th class="col-xs-3 active">注文個数</th>
-		    <th class="col-xs-3 active">注文ステータス</th>
-		</tr>
-    </thead>
-<!-- 
-    <tbody>
-	  <%# @oder.each do |order| %>
-		 <tr>
-		   <tr><%= order.timesstamps %></tr>
-		   <tr><%= order.customer_id %></tr>
-		   <tr><%= order.billing_amount %></tr>
-		   <tr><%= order.status %></tr>
+<div class="container">
+	<h3>注文一覧画面</h3>
+
+	<table class="table table-bordered table-hover">
+	 	<thead>
+		  <tr class="active">
+		   <td class="col-md-2"><h4>購入日時</h4></td>
+		   <td class="col-md-4"><h4>購入者</h4></td>
+		   <td class="col-md-2"><h4>注文個数</h4></td>
+		   <td class="col-md-3"><h4>注文ステータス</h4></td>
 		 </tr>
-	  <%# end %>
-    </tbody> -->
-
-
-</table>
-
-<%= will_paginate @orders %>
-
-<!-- 
-     t.integer :customer_id
-      t.integer :shipping_fee
-      t.integer :billing_amount
-      t.integer :payment_method
-      t.string :postal_code
-      t.string :address
-      t.string :name
-      t.integer :status -->
+		</thead>
+	   <% @orders.each do |order| %>
+	    <tbody>
+		 <tr>
+		   <td><%= order.created_at %></td>
+		   <td><%= order.name %></td>
+		   <td><%= order.status %></td>
+		   <td><%= order.quantity %></td>
+		 </tr>
+		</tbody>
+		<% end %>
+	</table>
+</div>
