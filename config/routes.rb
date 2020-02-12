@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     passwords: 'customers/passwords'
   }
 
-  get 'orders/:id/confirm', to: 'orders#confirm'
+  get 'orders/:id/confirm', to: 'orders#confirm', as: 'orders_confirm'
   get 'orders/complete', to: 'orders#complete'
   resources :customers, :deliveries, :orders, :cart_items, :items
 
