@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
 
-  get 'orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
   get 'orders/complete', to: 'orders#complete'
   resources :customers, :deliveries, :orders,  :items
   resources :cart_items

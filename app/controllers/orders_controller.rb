@@ -13,27 +13,30 @@ def confirm
     ## 自身の住所の処理
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.postal_code = current_customer.postal_code
-    @order.lastname = current_customer.lastname
-    @order.firstname = current_customer.firstname
+    @order.name = current_customer.lastname + current_customer.firstname
+    @order.status = 1
 
     elsif params[:selected_address]== 'deliveries'
     ## 選択された住所の処理
-    @order.postal_code = Delivery.postal_code
-
+    @order.postal_code =  Order.deliveries.postal_code
     @order.address = Order.deliveries.address
     @order.address = Order.deliveries.name
+    @order.name = Delivery.name
 
     else params[:selected_address]== 'new_deliveries'
     ## 新しい住所の処理
     # @order.postal_code = Order.postal_code.new
     @order_new= Order.new
+    @order.status = 1
     #@order.address = new_deliveries.address
     end
 
 end
 
 def create
+    order = Order.new(order_params)
+    order.save
+    redirect_to orders_complete_path
 end
 
 def complete
