@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h3>購入情報入力</h3>
-			<%= form_for(@order, url: orders_confirm_path(@customer), method: :get) do |f| %>
+			<%= form_with url: confirm_path, method: :get,local: true do |f| %>
 			<h3>支払方法</h3>
 			<label>
 				<%= f.radio_button :payment_method, :クレジットカード, required: true %>クレジットカード
@@ -29,7 +29,7 @@
 				登録先住所から選択
 			</label>
 			<br>
-			<%= f.select :address, current_customer.deliveries.all.map { |ship| [ship.address] }, class: 'col-xs-8' %><br>
+			<%= f.select :sub_address, current_customer.deliveries.map { |ship| ship.id }, class: 'col-xs-8' %><br>
 
 
 
@@ -60,7 +60,7 @@
 
 				<tr>
 					<div class="field">
-						<th class="col-xs-3 active"><%= f.label :宛名 %></th>
+						<th class="col-xs-3"><%= f.label :宛名 %></th>
 						<div class="col-xs-9">
 							<td><%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'col-xs-6' %></td>
 						</div>
