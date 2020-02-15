@@ -17,7 +17,7 @@
 		   <td style="vertical-align: middle;"><%= f.text_field :name, class: 'col-md-6' %></td>
 		 </tr>
 		</table>
-
+		<%= f.hidden_field :customer_id,:value => current_customer.id %>
 	    <%= f.submit '登録する', class: 'btn btn-primary col-md-offset-10 col-md-2', style: 'margin-bottom: 40px;' %>
   	<% end %>
   </div>

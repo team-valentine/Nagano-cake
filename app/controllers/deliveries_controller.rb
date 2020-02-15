@@ -1,7 +1,7 @@
 class DeliveriesController < ApplicationController
   def index
   	@delivery = Delivery.new
-  	@deliveries = Delivery.all.reverse_order
+    @deliveries = current_customer.deliveries.reverse_order
   end
 
   def create
@@ -28,7 +28,7 @@ class DeliveriesController < ApplicationController
 
   private
   def delivery_params
-  	params.require(:delivery).permit(:postal_code, :address, :name)
+  	params.require(:delivery).permit(:customer_id, :postal_code, :address, :name)
   end
 
 end
