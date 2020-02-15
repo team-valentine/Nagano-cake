@@ -1,24 +1,2 @@
-<div class="container">
-	<h3>注文一覧画面</h3>
-
-	<table class="table table-bordered table-hover">
-	 	<thead>
-		  <tr class="active">
-		   <td class="col-md-2"><h4>購入日時</h4></td>
-		   <td class="col-md-4"><h4>購入者</h4></td>
-		   <td class="col-md-2"><h4>注文個数</h4></td>
-		   <td class="col-md-3"><h4>注文ステータス</h4></td>
-		 </tr>
-		</thead>
-	   <% @orders.each do |order| %>
-	    <tbody>
-		 <tr>
-		   <td><%= order.created_at %></td>
-		   <td><%= order.name %></td>
-		   <td><%= order.status %></td>
-		   <td><%= order.quantity %></td>
-		 </tr>
-		</tbody>
-		<% end %>
-	</table>
-</div>
+<h1>Admin::Orders#index</h1>
+<p>Find me in app/views/admin/orders/index.html.erb</p>
