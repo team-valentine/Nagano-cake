@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   root 'customers#top'
 
   get 'about', to: 'customers#about'
-  get 'customers/cancel_registrations', to: 'customers#cancel_registrations'
+  get 'customers/cancel_registrations', to: 'customers#cancel_registrations',as: 'cancel_registration'
 
   namespace :admins do
     resources :customers, :orders, :items, :genres
