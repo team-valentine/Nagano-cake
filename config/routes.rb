@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations',
     sessions: 'admins/sessions'
   }
-
+  get "orders/confirm" => "orders#confirm", as: "confirm"
   get 'orders/complete', to: 'orders#complete'
   resources :customers, :deliveries, :orders,  :items
   resources :cart_items
@@ -21,8 +21,6 @@ Rails.application.routes.draw do
 
   get 'about', to: 'customers#about'
   get 'customers/cancel_registrations', to: 'customers#cancel_registrations',as: 'cancel_registration'
-
-  get 'orders/:id/confirm' => 'orders#confirm',as: 'orders_confirm'
 
   namespace :admins do
     resources :customers, :orders, :items, :genres

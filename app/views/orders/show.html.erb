@@ -1,0 +1,68 @@
+<div class="container">
+	<h3 style="margin: 30px 0;">注文履歴詳細</h3>
+
+<div class="row">
+  	<div class="col-md-8">
+		<table class="table table-bordered col-md-8">
+		 <tr>
+		   <th class="active col-md-3"><h4>注文日</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.created_at %></td>
+		 </tr>
+		 <tr>
+		   <th class="active col-md-3"><h4>配送先</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.postal_code %><br><%= @order.address %><br><%= @order.name %></td>
+		 </tr>
+		 <tr>
+		   <th class="active col-md-3"><h4>支払い方法</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.payment_method  %></td>
+		 </tr>
+		 <tr>
+		   <th class="active col-md-3"><h4>ステータス</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.status %></td>
+		 </tr>
+		</table>
+	</div>
+	<div class="col-md-4">
+		<table class="table table-bordered">
+		 <tr>
+		   <th class="active col-md-3"><h4>商品合計</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.billing_amount - @order.shipping_fee %></td>
+		 </tr>
+		 <tr>
+		   <th class="active col-md-3"><h4>配送料</h4></th>
+		   <td style="vertical-align: middle;"><%= @order.shipping_fee %></td>
+		 </tr>
+		 <tr>
+		   <th class="active col-md-3"><h4><b>ご請求額</b></h4></th>
+		   <td style="vertical-align: middle;"><%= @order.billing_amount %></td>
+		 </tr>
+		</table>
+	</div>
+
+</div>
+
+
+
+  <div class="row col-md-8">
+	<table class="table table-bordered table-hover">
+	 	<thead>
+		  <tr class="active">
+		   <td class="col-md-2"><h4>商品</h4></td>
+		   <td class="col-md-4"><h4>単価</h4></td>
+		   <td class="col-md-2"><h4>個数</h4></td>
+		   <td class="col-md-3"><h4>小計</h4></td>
+		 </tr>
+		</thead>
+	   <% @orders.each do |order| %>
+	    <tbody>
+		 <tr>
+		   <td><%=  %></td>
+		   <td><%=  %></td>
+		   <td><%=  %></td>
+		   <td><%=  %></td>
+		 </tr>
+		</tbody>
+		<% end %>
+	</table>
+  </div>
+</div>
