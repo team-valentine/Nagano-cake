@@ -4,35 +4,53 @@ class OrdersController < ApplicationController
     @customer=current_customer
   end
 
-  def confirm
-    @order=Order.new
+def confirm
+    @customer=current_customer
+    @order=Order.new(order_params)
     @cart_item=CartItem.new
     @cart_items=CartItem.all
-  end
+    if params[:selected_address]== 'customer'
+    ## 自身の住所の処理
+    @order.postal_code = current_customer.postal_code
+    @order.address = current_customer.address
+    @order.postal_code = current_customer.postal_code
+    @order.lastname = current_customer.lastname
+    @order.firstname = current_customer.firstname
 
-  def create
-    @order=Order.new(order_params)
-    @order.customer_id = current_customer.id
-    if @order.save
-    redirect_to orders_confirm_path(@order)
-  else
-    @customer=current_customer
-    render :new
+    elsif params[:selected_address]== 'deliveries'
+    ## 選択された住所の処理
+    @order.postal_code = Delivery.postal_code
+
+    @order.address = Order.deliveries.address
+    @order.address = Order.deliveries.name
+
+    else params[:selected_address]== 'new_deliveries'
+    ## 新しい住所の処理
+    # @order.postal_code = Order.postal_code.new
+    @order_new= Order.new
+    #@order.address = new_deliveries.address
     end
-  end
 
-  def complete
-  end
+end
 
-  def index
-  end
+def create
+end
 
-  def show
-  end
+def complete
 
-  private
-  def order_params
-  params.require(:order).permit(:lastname,:firstname,:kana_lastname,:kana_firstname,:postal_code,:address,:phone_number,:email, :status)
-  end
+end
+
+def index
+end
+
+def show
+end
+
+private
+def order_params
+  params.require(:order).permit(:customer_id, :shipping_fee, :billing_amount, :payment_method, :postal_code, :address, :name, :status)
+end
+
+
 
 end
