@@ -18,3 +18,5 @@ Customer.create(lastname: 'test', email: 'test@test', password: 'testtest')
 Item.create(genre_id: 1, name: '美味しいケーキ', description: '美味しいです', tax_excluded_price: '800', status: 1)
 
 Delivery.create(postal_code: '1111', address: 'tokyo', name: 'taro yamada')
+
+Order.create(customer_id: 1, shipping_fee: '800', billing_amount: '3000', payment_method: 'クレジットカード', postal_code: '1111111', address: '沖縄', name: '太郎', status: 1)

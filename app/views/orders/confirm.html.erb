@@ -1,67 +1,37 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h3>注文情報確認</h3>
-
 			<!-- 7-75まで　form_for -->
 				<h3>注文情報確認</h3>
+
 			<div class="col-xs-8">
-			<%= form_for(@cart_item, url: new_order_path(@cart_item), method: :post) do |f| %>
+			<%= form_for(@order, url: orders_path, method: :post) do |f| %>
 			  <table class="table table-borderd">
 				<thead>
-						    <tr>
-							   <th class="col-xs-3 active">商品名</<th>
-								<th class="col-xs-3 active">単価(税込)</th>
-								<th class="col-xs-3 active">数量</th>
-								<th class="col-xs-3 active">小計</th>
-							</tr>
-						</thead>
+					<tr>
+						<th class="col-xs-3 active">商品名</<th>
+						<th class="col-xs-3 active">単価(税込)</th>
+						<th class="col-xs-3 active">数量</th>
+						<th class="col-xs-3 active">小計</th>
+					</tr>
+				</thead>
 
 				<tbody>
 					<% sum = 0 %>
 					<% @cart_items.each do |cart_item| %>
-					  <tr>
-						<td><%= cart_item.item.name  %></td><!-- 商品名 -->
-						<td><%= cart_item.item.price_with_tax %></td>
-						<td><%= cart_item.quantity  %></td>
-						<td><%= cart_item.item.price_with_tax * cart_item.quantity %>
-							<% sum = sum +cart_item.item.price_with_tax * cart_item.quantity%>
-						</td>
-					  </tr>
+					  	<tr>
+							<td><%= cart_item.item.name  %></td><!-- 商品名 -->
+							<td><%= cart_item.item.price_with_tax %></td>
+							<td><%= cart_item.quantity  %></td>
+							<td><%= cart_item.item.price_with_tax * cart_item.quantity %>
+							<% sum = sum + cart_item.item.price_with_tax * cart_item.quantity%>
+							</td>
+					  	</tr>
 					<% end %>
-					
 				</tbody>
 			  </table>
-			<% end %>
 			</div>
 
-
-			<div class="col-xs-4">
-				<table>
-					<th class="col-xs-3 active">送料</th>
-					<th class="col-xs-3 active">商品合計</th>
-					<th class="col-xs-3 active">請求金額</th>
-					<td class="col-xs-3"><%= 800 %></td>
-					<td class="col-xs-3"><%=  %></td>
-					<td class="col-xs-3"><%= %></td>
-				</table>
-			</div>
-
-
-						<tbody>
-							<% @cart_items.each do |cart_item| %>
-							<tr>
-								<td><%= cart_item.item.name  %></td><!-- 商品名 -->
-								<td><%= cart_item.item.price_with_tax %></td>
-								<td><%= cart_item.quantity  %></td>
-
-
-<div class="row col-xs-12">
-			<th>支払い方法</th>
-			<!-- <td><%= @order.customer.payment_method %></td> -->
-			<th>お届け先</th>
-			<!-- <td><%= @order.customer.address %></td> -->
-</div>
 
 
 				<!-- ここから  -->
@@ -69,33 +39,36 @@
 				   <table class="table table-borderd">
 						<tr>
 							<th class="col-xs-3 active">送料</th>
-							<td class="col-xs-3"><%= %></td>
+							<td class="col-xs-3"><%= @order.shipping_fee %></td>
 						</tr>
 						<tr>
 							<th class="col-xs-3 active">商品合計</th>
-							<td class="col-xs-3"><%= %></td>
+							<td class="col-xs-3"><%= sum %></td>
 						</tr>
 						<tr>
 						    <th class="col-xs-3 active">請求金額</th>
-						    <td class="col-xs-3"><%= %></td>
+						    <td class="col-xs-3"><%= @order.shipping_fee + sum %></td>
 					    </tr>
 				   </table>
 			    </div>
 			<!-- ここまで -->
 
+
+
+
+
 			<!-- ここから -->
 			<div class="row col-xs-12">
 				<th>支払い方法</th>
-				<td><%= hidden_field :payment_method, @order.customer_id %>
+				<td><%= f.hidden_field :payment_method, :value => @order.payment_method %>
 					<%= @order.payment_method %>
 				</td>
 				<br>
 				<th>お届け先</th>
 				<td>
-				　<p>〒<%= @customer.postal_code.to_s.insert(3, "-") %></p>
-			　　<%= @customer.address %><br>
-			    <%= @customer.lastname %><%= @customer.firstname %><br>
-
+				　<p>〒<%= @order.postal_code.to_s.insert(3, "-") %></p>
+			　　<%= @order.address %><br>
+			    <%= @order.name %><br>
 				</td>
 			</div>
 			<!-- ここまで -->
@@ -107,6 +80,13 @@
 				</div>
 			</div>
 			<!-- ここまで -->
+			<%= f.hidden_field :customer_id, :value => current_customer.id %>
+			<%= f.hidden_field :shipping_fee, :value => @order.shipping_fee %>
+			<%= f.hidden_field :billing_amount, :value => @order.shipping_fee + sum %>
+			<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+			<%= f.hidden_field :address, :value => @order.address %>
+			<%= f.hidden_field :name, :value => @order.name  %>
+			<%= f.hidden_field :status, :value => @order.status %>
 			<% end %>
 		</div>
 	</div>
