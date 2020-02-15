@@ -19,7 +19,7 @@
 
 			<%= f.radio_button :status, :false %>
 			<%= f.label :customer_id, "登録先住所から選択" %><br>
-			<%= f.select :address,@customer.deliveries.all.map { |ship| [ship.adress] }, class: 'col-xs-8' %><br>
+			<%= f.select :address,@customer.deliveries.all.map { |ship| [ship.address] }, class: 'col-xs-8' %><br>
 
 			<%= f.radio_button :status, :false %>
 			<%= f.label :customer_id, "新しいお届け先" %><br>
