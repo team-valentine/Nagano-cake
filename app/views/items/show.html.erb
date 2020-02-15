@@ -22,9 +22,13 @@
 		</div>
 
 		<div class="col-md-4 col-md-offset-6">
-			<%= form_for(@cart_item, ) do |f| %>
-				<%= hidden_field_tag :item, @item.name %>
-				<%= f.number_field :quantity, class: "number_field" , required:true, min: 0 %>
+			<%= form_for(@cart_item, url: cart_items_path, method: :post) do |f| %>
+			    <%= f.hidden_field :name, :value => @item.name %>
+				<%= f.hidden_field :image_id, :value => @item.image_id %>
+				<%= f.hidden_field :item_id, :value => @item.id %>
+				<%= f.hidden_field :customer_id, :value => current_customer.id %>
+				<%= f.hidden_field :quantity, class: "number_field" , required:true, min: 0 %>
+				<%= f.number_field :quantity, class: "number_field", required:true, min: 0 %>
 				<%= f.submit 'カートに入れる', class: "btn btn-primary" %>
 			<% end %>
 		</div>
