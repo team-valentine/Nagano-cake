@@ -1,2 +1,65 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+
+	<h2><b>会員詳細画面</b></h2>
+
+	<div class="row">
+		<table class="col-md-offset-1">
+			<tbody>
+					<tr>
+						<th class="col-md-2">顧客ID</div>
+						<td class="col-md-6"><%= @customer.id %>
+						<% if @customer.status == true %>
+						<p class="label label-info" >有効会員</p>
+						<% elsif @customer.status == false %>
+						<P class="label label-info" >退会済み
+						<% else %>
+						<p class="label label-info" >有効会員
+						<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th class="col-md-2">氏名</th>
+						<td class="col-md-6">
+							<%= @customer.lastname %>
+							<%= @customer.firstname %>
+						</td>
+					</tr>
+					<tr>
+
+						<th class="col-md-2">フリガナ</th>
+						<td class="col-md-6">
+							<%= @customer.kana_lastname %>
+							<%= @customer.kana_firstname %>
+						</td>
+					</tr>
+					<tr>
+
+						<th class="col-md-2">郵便番号</th>
+						<td class="col-md-6"><%= @customer.postal_code %></td>
+					</tr>
+					<tr>
+
+						<th class="col-md-2">住所</th>
+						<td class="col-md-6"><%= @customer.address %></td>
+					</tr>
+					<tr>
+
+						<th class="col-md-2">電話番号</th>
+						<td class="col-md-6"><%= @customer.phone_number %></td>
+					</tr>
+					<tr>
+
+						<th class="col-md-2">メールアドレス</th>
+						<td class="col-md-6"><%= @customer.email %></td>
+					</tr>
+
+				</tbody>
+
+			</table>
+
+					<div class="col-md-5 col-md-offset-2">
+						<%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary' %>
+						<%= link_to "注文履歴一覧を見る", admins_order_path(@customer), class: 'btn btn-primary' %>
+					</div>
+	</div>
+</div>
