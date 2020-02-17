@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_02_06_021758) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.integer "status"
+    t.integer "status", limit: 1, default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

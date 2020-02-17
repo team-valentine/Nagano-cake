@@ -1,28 +1,30 @@
 <div class="container">
 	<div class="row">
-		<div style="height: 400px; margin-bottom: 30px; position: relative">
+		<div style="height: 450px; margin-bottom: 30px; position: relative">
 		    <div class="theTarget">
-				<div style="background-image:url(<%= asset_path "test1.jpg" %>)"></div>
-				<div style="background-image:url(<%= asset_path "test2.jpg" %>)"></div>
-				<div style="background-image:url(<%= asset_path "test3.jpg" %>)"></div>
-				<div style="background-image:url(<%= asset_path "test4.jpg" %>)"></div>
-				<div style="background-image:url(<%= asset_path "test5.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "shop.jpg" %>); background-position:50% 38%; background-size:cover; %;"></div>
+				<div style="background-image:url(<%= asset_path "cake3.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "cake1.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "pudding2.jpg" %>)"></div>
+				<div style="background-image:url(<%= asset_path "cookie.jpg" %>)"></div>
 		    </div>
-		    <h2 style="
-					color: #fff;
-					letter-spacing: 0.25em;
+		    <h1 style="
+					color: #ffe4c4;
+					letter-spacing: 0.1em;
 					position: absolute;
 					top: 50%;
 					left: 50%;
 					-ms-transform: translate(-50%, -50%);
 					-webkit-transform: translate(-50%, -50%);
 					transform: translate(-50%, -50%);
-				">Welcome to Nagano Cake</h2>
+					text-shadow: 3px 4px 5px #808080;
+					font-size: 40px;
+				">Welcome to Nagano Cake</h1>
 		</div>
 
 		<div class="row" style="text-align: center; margin-bottom: 30px;">
 		  	<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'width: 100%;' %>
+				<%= link_to image_tag("cake2.jpg", size: '250x200', alt: "ケーキ画像"), items_path, style: 'width: 100%;' %>
 				<h3 style="
 					color: #333;
 					position: absolute;
@@ -35,7 +37,7 @@
 	        </div>
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path(genre_id: 1), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("back-cake.jpg", size: '250x200', alt: "ケーキ画像"), items_path(genre_id: 1), style: 'margin-right: 10px; width: 100%;' %>
 				<h3 style="
 				    color: #333;
 					position: absolute;
@@ -48,7 +50,7 @@
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path(genre_id: 2), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("baked-cake.jpg", size: '250x200', alt: "ケーキ画像"), items_path(genre_id: 2), style: 'margin-right: 10px; width: 100%;' %>
 				<h3 style="
 				    color: #333;
 					position: absolute;
@@ -64,7 +66,7 @@
 		<div class="row" style="text-align: center;">
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path(genre_id: 3), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("pudding.jpg", size: '250x200', alt: "ケーキ画像"), items_path(genre_id: 3), style: 'margin-right: 10px; width: 100%;' %>
 				<h3 style="
 					color: #333;
 					position: absolute;
@@ -77,7 +79,7 @@
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path(genre_id: 4), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("candy.jpg", size: '250x200', alt: "ケーキ画像"), items_path(genre_id: 4), style: 'margin-right: 10px; width: 100%;' %>
 				<h3 style="
 					color: #333;
 					position: absolute;
@@ -90,7 +92,7 @@
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("back-cake.jpg", width: '300', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("macaron.jpg", size: '250x200', alt: "ケーキ画像"), items_path, style: 'margin-right: 10px; width: 100%;' %>
 				<h3 style="
 					color: #333;
 					position: absolute;
