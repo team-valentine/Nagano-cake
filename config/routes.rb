@@ -11,20 +11,19 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations',
     sessions: 'admins/sessions'
   }
-
-  get 'orders/:id/confirm', to: 'orders#confirm'
+  get "orders/confirm" => "orders#confirm", as: "confirm"
   get 'orders/complete', to: 'orders#complete'
   resources :customers, :deliveries, :orders,  :items
-  resources :cart_items 
+  resources :cart_items
   delete 'cart_items_destroy_all' => 'cart_items#destroy_all',as: 'cart_items_destroy_all'
- 
+
   root 'customers#top'
 
   get 'about', to: 'customers#about'
-  get 'customers/cancel_registrations', to: 'customers#cancel_registrations'
+  get 'customers/cancel_registrations', to: 'customers#cancel_registrations',as: 'cancel_registration'
 
   namespace :admins do
-    resources :customers, :orders, :items, :genres
+    resources :customers, :orders, :items, :genres, :order_items
     get 'top', to: 'items#top'
   end
 end

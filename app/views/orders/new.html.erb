@@ -2,27 +2,43 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h3>購入情報入力</h3>
-
-
-			<%= form_for(@order) do |f| %>
+			<%= form_with url: confirm_path, method: :get,local: true do |f| %>
 			<h3>支払方法</h3>
-			<%= f.radio_button :status, :true %>
-			<%= f.label :status, "クレジットカード" %><br>
-			<%= f.radio_button :status, :false %>
-			<%= f.label :status, "銀行振込" %>
+			<label>
+				<%= f.radio_button :payment_method, :クレジットカード, required: true %>クレジットカード
+			</label><br>
 
+			<label>
+				<%= f.radio_button :payment_method, :銀行振込, required: true %>
+				銀行振込
+			</label>
 			<h3>お届け先</h3>
 
-			<%= f.radio_button :status, :true %>
-			<%= f.label :customer_id, "ご自身の住所" %><br>
-			<%= @customer.address %><br>
+			<label>
+				<%= radio_button_tag(:selected_address,'customer', checked: true, required: true )  %>
+				ご自身の住所
+			</label>
+			<br />
 
-			<%= f.radio_button :status, :false %>
-			<%= f.label :customer_id, "登録先住所から選択" %><br>
-			<%= f.select :address,@customer.deliveries.all.map { |ship| [ship.adress] }, class: 'col-xs-8' %><br>
+			<p>〒<%= @customer.postal_code.to_s.insert(3, "-") %></p><%= @customer.address %><br>
+			    <%= @customer.lastname %><%= @customer.firstname %><br>
 
-			<%= f.radio_button :status, :false %>
-			<%= f.label :customer_id, "新しいお届け先" %><br>
+
+			<label>
+				<%= radio_button_tag(:selected_address,'deliveries', required: true )  %>
+				登録先住所から選択
+			</label>
+			<br>
+			<%= f.select :sub_address, current_customer.deliveries.map { |ship| ship.id }, class: 'col-xs-8' %><br>
+
+
+
+			<label>
+				<%= radio_button_tag(:selected_address,'new_deliveries', required: true )  %>
+				新しいお届け先
+			</label>
+			<br>
+
 
 			<table class="table">
 				<tr>
@@ -44,7 +60,7 @@
 
 				<tr>
 					<div class="field">
-						<th class="col-xs-3 active"><%= f.label :宛名 %></th>
+						<th class="col-xs-3"><%= f.label :宛名 %></th>
 						<div class="col-xs-9">
 							<td><%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'col-xs-6' %></td>
 						</div>
