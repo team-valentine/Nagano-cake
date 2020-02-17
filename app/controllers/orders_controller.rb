@@ -10,23 +10,23 @@ def confirm
     @cart_item=CartItem.new
     @cart_items=CartItem.all
     @order= Order.new
+    @order.status = 1
+    @order.payment_method = params[:payment_method]
     if params[:selected_address]== 'customer'
     ## 自身の住所の処理
-        @order.postal_code = current_customer.postal_code
-        @order.address = current_customer.address
-        @order.name = current_customer.lastname + current_customer.firstname
-        @order.status = 1
+        @delivery = Delivery.find(params[:sub_address])
+        @delivery.postal_code = current_customer.postal_code
+        @delivery.address = current_customer.address
+        @delivery.name = current_customer.lastname + current_customer.firstname
 
     elsif params[:selected_address]== 'deliveries'
     ## 選択された住所の処理
-     @delivery = Delivery.find(params[:sub_address])
+        @delivery = Delivery.find(params[:sub_address])
 
 
     else params[:selected_address]== 'new_deliveries'
     ## 新しい住所の処理
     # @order.postal_code = Order.postal_code.new
-    
-    @order.status = 1
     #@order.address = new_deliveries.address
     end
 

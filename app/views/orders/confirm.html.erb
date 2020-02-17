@@ -67,8 +67,8 @@
 				<th>お届け先</th>
 				<td>
 				　<p>〒<%= @delivery.postal_code.to_s.insert(3, "-") %></p>
-			　　<%= @order.address %><br>
-			    <%= @order.name %><br>
+			　　<%= @delivery.address %><br>
+			    <%= @delivery.name%><br>
 				</td>
 			</div>
 			<!-- ここまで -->
@@ -83,9 +83,9 @@
 			<%= f.hidden_field :customer_id, :value => current_customer.id %>
 			<%= f.hidden_field :shipping_fee, :value => @order.shipping_fee %>
 			<%= f.hidden_field :billing_amount, :value => @order.shipping_fee + sum %>
-			<%= f.hidden_field :postal_code, :value => @order.postal_code %>
-			<%= f.hidden_field :address, :value => @order.address %>
-			<%= f.hidden_field :name, :value => @order.name  %>
+			<%= f.hidden_field :postal_code, :value => @delivery.postal_code %>
+			<%= f.hidden_field :address, :value => @delivery.address %>
+			<%= f.hidden_field :name, :value => @delivery.name  %>
 			<%= f.hidden_field :status, :value => @order.status %>
 			<% end %>
 		</div>
