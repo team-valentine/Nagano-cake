@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'customers/cancel_registrations', to: 'customers#cancel_registrations',as: 'cancel_registration'
 
   namespace :admins do
-    resources :customers, :orders, :items, :genres
+    resources :customers, :orders, :items, :genres, :order_items
     get 'top', to: 'items#top'
   end
 end

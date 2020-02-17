@@ -66,6 +66,7 @@
 				<br>
 				<th>お届け先</th>
 				<td>
+
 			<% if params[:selected_address] == 'customer' %>
 				<p>〒<%= current_customer.postal_code.to_s.insert(3, "-") %></p>
 			　　		<%= current_customer.address %><br>
@@ -95,6 +96,7 @@
 			    <%= f.hidden_field :name, :value => params[:name]  %>
 
 			<% end %>
+
 				</td>
 			</div>
 			<!-- ここまで -->

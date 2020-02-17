@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
 def confirm
     @customer=current_customer
+
     @cart_item=CartItem.new
     @cart_items=CartItem.all
     @order= Order.new
@@ -60,5 +61,6 @@ private
 def order_params
   params.require(:order).permit(:customer_id, :shipping_fee, :billing_amount, :payment_method, :postal_code, :address, :name, :status)
 end
+
 
 end
