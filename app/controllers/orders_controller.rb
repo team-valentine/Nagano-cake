@@ -47,6 +47,8 @@ def complete
 end
 
 def index
+    @orders = current_customer.orders
+
 end
 
 def show

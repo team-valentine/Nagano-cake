@@ -6,5 +6,4 @@ class OrderItem < ApplicationRecord
     tax = 1.1
     (tax_excluded_price * tax).floor
   end
-
 end
