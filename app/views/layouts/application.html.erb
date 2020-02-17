@@ -15,36 +15,58 @@
           <div class="container">
                 <nav class="nav navbar-nav">
                     <h2>ながのCAKE</h2>
+                     <% if customer_signed_in? %>
+                          <p><%= current_customer.lastname %>さんがログインしています。</p>
+                      <% end %>
                 </nav>
+
                 <div class="collapse navbar-collapse" id="Navber">
                    <ul class="nav navbar-nav navbar-right">
                      <% if customer_signed_in? %>
                         <div class="row">
-                          <li class="list-item col-md-offset-4 col-md-4">
-                            <%= link_to_unless_current "Home", root_path %>
-                          </li>
-                          <li class="list-item col-md-4">
-                            <%= link_to_unless_current "About", about_path  %>
-                          </li>
-                        </div>
-                        <div class="row">
-                          <li class="list-item col-md-4">
+                          <li class="list-item col-md-offset-3 col-md-3">
                             <% body = capture do %>
-                                <p><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart</p>
-                              <% end %>
-                              <%= link_to_unless_current body, cart_items_path %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>HOME</p>
+                            <% end %>
+                            <%= link_to_unless_current body, root_path %>
                           </li>
 
-                          <li class="list-item col-md-4">
-                            <%= link_to_unless_current "MyPage", customer_path(current_customer.id) %>
+                          <li class="list-item col-md-3">
+                            <% body = capture do %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>ABOUT</p>
+                            <% end %>
+                            <%= link_to_unless_current body, about_path  %>
                           </li>
 
-                          <li class="list-item col-md-4">
-                            <%= link_to_unless_current "Logout", destroy_customer_session_path, method: :delete %>
+                          <li class="list-item col-md-3">
+                            <% body = capture do %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span>CAKE</p>
+                            <% end %>
+                            <%= link_to_unless_current body, items_path  %>
                           </li>
                         </div>
                         <div class="row">
-                          <p class="col-md-offset-4"><%= current_customer.lastname %>さんがログインしています。</p>
+                          <li class="list-item col-md-offset-3 col-md-3">
+                            <% body = capture do %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>CART</p>
+                            <% end %>
+                            <%= link_to_unless_current body, cart_items_path %>
+                          </li>
+
+                          <li class="list-item col-md-3">
+                            <% body = capture do %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>MYPAGE</p>
+                            <% end %>
+                            <%= link_to_unless_current body, customer_path(current_customer.id) %>
+                          </li>
+
+                          <li class="list-item col-md-3">
+                            <% body = capture do %>
+                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>LOGOUT</p>
+                            <% end %>
+                            <%= link_to_unless_current body, destroy_customer_session_path, method: :delete %>
+                          </li>
+
                         </div>
 
                      <% elsif admin_signed_in? %>
@@ -64,17 +86,32 @@
 
                      <% else %>
 
-                        <li class="list-item">
-                          <%= link_to "Home", root_path %>
+                        <li class="list-item col-md-offset-3 col-md-2">
+                          <% body = capture do %>
+                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>HOME</p>
+                          <% end %>
+                          <%= link_to body, root_path %>
                         </li>
-                        <li class="list-item">
-                         <%= link_to "About", about_path %>
+
+                        <li class="list-item col-md-2">
+                          <% body = capture do %>
+                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>ABOUT</p>
+                          <% end %>
+                          <%= link_to body, about_path  %>
                         </li>
-                        <li class="list-item">
-                          <%= link_to "Login", new_customer_session_path %>
+
+                        <li class="list-item col-md-2">
+                          <% body = capture do %>
+                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>LOGIN</p>
+                          <% end %>
+                          <%= link_to body, new_customer_session_path  %>
                         </li>
-                        <li class="list-item">
-                          <%= link_to "Signup", new_customer_registration_path %>
+
+                        <li class="list-item col-md-2">
+                          <% body = capture do %>
+                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>SIGNUP</p>
+                          <% end %>
+                          <%= link_to body, new_customer_registration_path  %>
                         </li>
                        <% end %>
                     </ul>

@@ -6,37 +6,29 @@ class OrdersController < ApplicationController
 
 def confirm
     @customer=current_customer
-    # @order=Order.new(order_params)
     @cart_item=CartItem.new
     @cart_items=CartItem.all
     @order= Order.new
-     @order.status = 1
-    if params[:selected_address]== 'customer'
-    ## 自身の住所の処理
-        @delivery = Delivery.find(params[:sub_address])
-        @delivery.postal_code = current_customer.postal_code
-        @delivery.address = current_customer.address
-        @delivery.name = current_customer.lastname + current_customer.firstname
-       
-
-    elsif params[:selected_address]== 'deliveries'
-    ## 選択された住所の処理
-     @delivery = Delivery.find(params[:sub_address])
-
-
-    else params[:selected_address]== 'new_deliveries'
-    ## 新しい住所の処理
-    # @order.postal_code = Order.postal_code.new
-    
+    @order.payment_method = params[:payment_method]
     @order.status = 1
-    #@order.address = new_deliveries.address
-    end
-
+     if params[:selected_address]== 'deliveries'
+        @delivery = Delivery.find(params[:sub_address])
+     elsif params[:selected_address] == 'new_deliveries'
+        # 新規の住所を保存
+        @new_address = Delivery.new
+        @new_address.postal_code = params[:postal_code]
+        @new_address.address = params[:address]
+        @new_address.name = params[:name]
+        @new_address.customer_id = current_customer.id
+        @new_address.save
+        flash[:notice] = '新しい配送先が保存されました。'
+     end
 end
 
 def create
     @order = Order.new(order_params)
     @order.save
+    binding.pry
     current_customer.cart_items.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.order_id = @order.id
@@ -60,15 +52,13 @@ def index
 end
 
 def show
-    @order = current_customer.orders
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
 end
 
 private
 def order_params
   params.require(:order).permit(:customer_id, :shipping_fee, :billing_amount, :payment_method, :postal_code, :address, :name, :status)
 end
-
-
 
 end
