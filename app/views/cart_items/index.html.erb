@@ -38,15 +38,18 @@
 				</tbody>
 			  </table>
 		</div>
-        
-        <div class=" row col-md-11 col-md-offset-1">
-        <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
 
-              <table class="table table-bordered  pull-right">
+        <div class=" row col-md-8 col-md-offset-1">
+        <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+        </div>
+
+        <div class="col-md-3">
+              <table class="table table-bordered col-md-offset-1">
+
               	<tbody>
               		<tr>
-              			<td class="active">合計金額</td>
-              			<td><%= sum %></td>
+              			<td class="active col-xs-6">合計金額</td>
+              			<td class="col-xs-6"><%= sum %></td>
               		</tr>
               	</tbody>
               </table>

@@ -9,6 +9,9 @@ class Order < ApplicationRecord
 	  800
 	end
 
+	def quantity_sum(order_id)
+		quantity_sum = Order.find(order_id).order_items.map{|q| q.quantity}.sum
+	end
 
 
 end
