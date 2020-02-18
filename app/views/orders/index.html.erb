@@ -28,12 +28,16 @@
 					</td>
 					<td style="vertical-align: middle;"><%= order.billing_amount + order.shipping_fee %></td>
 					<td style="vertical-align: middle;"><%= order.status %></td>
-					<td style="vertical-align: middle; text-align: center;"><%= link_to "表示する", order_path(current_customer), class: "btn btn-primary" %></td>
+					<td style="vertical-align: middle; text-align: center;"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
 				</tr>
 			</tbody>
 		<% end %>
 
 		</table>
+
+		<div class="row col-md-offset-5 col-md-2">
+		<%= paginate @orders, class: "paginate" %>
+		</div>
 
 	</div>
 

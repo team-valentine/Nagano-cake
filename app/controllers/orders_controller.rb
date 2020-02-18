@@ -29,7 +29,6 @@ end
 def create
     @order = Order.new(order_params)
     @order.save
-    binding.pry
     current_customer.cart_items.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.order_id = @order.id
@@ -48,7 +47,7 @@ def complete
 end
 
 def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page]).per(5)
 
 end
 

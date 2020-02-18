@@ -1,2 +1,7 @@
 <h1>Admin::Items#top</h1>
 <p>Find me in app/views/admin/items/top.html.erb</p>
+<% @orders.count %>件
+
+<% @search_items.each do |item| %>
+  <% item %>
+<% end %>
