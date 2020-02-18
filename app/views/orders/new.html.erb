@@ -36,7 +36,11 @@
 				</label>
 				<br>
 
-				<%= f.select :sub_address, current_customer.deliveries.map { |ship| ship.id }, class: 'col-xs-8' %><br>
+
+
+
+<%= f.select :sub_address, @customer.deliveries.map{ |ship| [ship.view_name_and_id] }, class: 'col-xs-8' %><br>
+
 
 
 				<label>

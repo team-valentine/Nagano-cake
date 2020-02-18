@@ -7,6 +7,7 @@ class CustomersController < ApplicationController
   end
 
   def cancel_registrations
+    redirect_to root_path
   end
 
   def show

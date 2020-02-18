@@ -21,7 +21,7 @@
 						<% sum = 0%>
 						<% @cart_items.each do |cart| %>
 						<tr>
-							<td><%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50'%><%= cart.item.name %></td>
+							<td><%= attachment_image_tag cart.item, :image, :fill, 50, 50, fallback: "no_image.png", size:'50x50'%><%= cart.item.name %></td>
 							<td><%= cart.item.price_with_tax %></td>
 							<td>
 								<%= form_for(cart, url: cart_item_path(cart.id), method: :patch) do |f| %>
