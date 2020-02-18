@@ -4,7 +4,15 @@
 			これまでの購入履歴が閲覧できなくなります。<br>
 			退会する場合は、「退会する」をクリックしてください。
 		<h4>
-	<%= link_to '退会しない', root_path, class: "btn btn-primary" %>
-	<%= link_to '退会する', root_path, class: "btn btn-danger" %>
+      
+	<div class="row">
+		<div class="col-md-offset-5 col-md-1"><%= link_to '退会しない', root_path, class: "btn btn-primary" %></div>
+		<div class="col-md-1">
+			<%= form_for(@customer, method: :delete) do |f| %>
+				<%= f.hidden_field :status,:value => false %>
+	    		<%= f.submit '退会する', class: "btn btn-danger" %>
+			<% end %>
+		</div>
+	</div>
 </div>
 

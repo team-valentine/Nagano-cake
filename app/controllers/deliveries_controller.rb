@@ -1,4 +1,5 @@
 class DeliveriesController < ApplicationController
+before_action :authenticate_customer!
   def index
   	@delivery = Delivery.new
     @deliveries = current_customer.deliveries.reverse_order
@@ -6,8 +7,12 @@ class DeliveriesController < ApplicationController
 
   def create
   	delivery = Delivery.new(delivery_params)
-  	delivery.save
-  	redirect_to deliveries_path
+  	if delivery.save
+      redirect_to deliveries_path, notice: '配送先が登録されました。'
+    else
+      redirect_to deliveries_path, notice: '配送先が空欄です。'
+    end
+
   end
 
   def edit
