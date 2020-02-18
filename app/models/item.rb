@@ -11,4 +11,5 @@ class Item < ApplicationRecord
     (tax_excluded_price * tax).floor
   end
 
+
 end
