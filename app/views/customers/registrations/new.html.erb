@@ -66,12 +66,13 @@
         <%= f.label :password_confirmation, class: 'col-md-6 col-md-offset-3', style: "margin-bottom: 10px;"  %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'col-md-6 col-md-offset-3', style: "margin-bottom: 30px;" %>
       </div>
-
+  <%= f.hidden_field :status,:value => true %>
       <div class="actions">
         <%= f.submit "Sign up", class: 'col-md-2 col-md-offset-5 btn-lg btn-primary', style: "margin-bottom: 10px;" %>
       </div>
 
     </div>
+
 
     <% end %>
 

@@ -1,7 +1,7 @@
 <div class="container">
 
 	<h2><b>会員詳細画面</b></h2>
-
+<p id="notice" class="text-warning"><%= notice %></p>
 	<div class="row">
 		<table class="col-md-offset-1">
 			<tbody>
@@ -10,10 +10,10 @@
 						<td class="col-md-6"><%= @customer.id %>
 						<% if @customer.status == true %>
 						<p class="label label-info" >有効会員</p>
-						<% elsif @customer.status == false %>
-						<P class="label label-info" >退会済み
+
 						<% else %>
-						<p class="label label-info" >有効会員
+
+						<P class="label label-danger" >退会済み
 						<% end %>
 						</td>
 					</tr>

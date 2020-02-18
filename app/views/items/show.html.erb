@@ -26,7 +26,7 @@
 					<% if @item.status == '販売中' %>
 						<%= f.hidden_field :item_id,:value => @item.id %>
 						<%= f.hidden_field :customer_id,:value => current_customer.id %>
-						<%= f.number_field :quantity, class: "number_field" , required:true, min: 0 %>
+						<%= f.number_field :quantity, class: "number_field" , required:true, min: 1 %>
 						<%= f.submit 'カートに入れる', class: "btn btn-primary" %>
 					<% else %>
 						<div class="btn btn-danger">売り切れです</div>
