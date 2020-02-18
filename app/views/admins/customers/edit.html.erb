@@ -1,7 +1,7 @@
 <div class="container">
 
 	<h2><b>会員編集画面</b></h2>
-
+<p id="notice" class="text-warning"><%= notice %></p>
 	<%= form_for(@customer, url: admins_customer_path(@customer),html: {method: :put}) do |f| %>
 
 
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<th class="col-md-2">会員ステータス</th>
-					<td><%= f.radio_button :status, true %>
+					<td><%= f.radio_button :status, true, {:checked => true} %>
 						<%= f.label :status, "有効" %>
 						<%= f.radio_button :status, false %>
 						<%= f.label :status, "退会済み" %>

@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<!-- 7-75まで　form_for -->
 				<h3>注文情報確認</h3>
 
 			<div class="col-xs-8">
@@ -70,14 +69,14 @@
 			<% if params[:selected_address] == 'customer' %>
 				<p>〒<%= current_customer.postal_code.to_s.insert(3, "-") %></p>
 			　　		<%= current_customer.address %><br>
-			    	<%= current_customer.firstname + " " + current_customer.lastname%><br>
+			    	<%= current_customer.lastname + " " + current_customer.firstname%><br>
 			    	<%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
 			    	<%= f.hidden_field :address, :value => current_customer.address %>
 			    	<%= f.hidden_field :name, :value => current_customer.firstname + current_customer.lastname %>
 
 			<% elsif params[:selected_address] == 'deliveries' %>
 
-				〒<%= @delivery.postal_code.to_s.insert(3, "-") %>
+				〒<%= @delivery.postal_code %>
 			　  <%= @delivery.address %><br>
 			    <%= @delivery.name %><br>
 

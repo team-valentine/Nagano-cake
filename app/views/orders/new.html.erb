@@ -1,101 +1,77 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h3>購入情報入力</h3>
-			<%= form_with url: confirm_path, method: :get,local: true do |f| %>
+	<div class="col-xs-12">
+		<h3>購入情報入力</h3>
+			<p id="notice" class="text-warning"><%= notice %></p>
 
-				<h3>支払方法</h3>
-				<label>
-					<%= f.radio_button :payment_method, :クレジットカード, :checked => true, required: true %>クレジットカード
-				</label><br>
+	<%= form_with url: confirm_path, method: :get,local: true do |f| %>
+<!-- ↓支払い方法選択 -->
+		<h4><span style="
+			background-color: rgba( 128, 128, 128, 0.4 );
+			padding: 0 10px;
+			border-radius: 7px;
+			">支払方法</span></h4>
 
-				<label>
-					<%= f.radio_button :payment_method, :銀行振込, required: true %>
-					銀行振込
-				</label>
+		<p style="text-indent: 2em;"><%= f.radio_button :payment_method, :クレジットカード, :checked => true, required: true %> クレジットカード</p><br>
 
+		<p style="text-indent: 2em;"><%= f.radio_button :payment_method, :銀行振込, required: true %> 銀行振込</p>
 
+<!-- ここまで -->
 
+<!-- ↓お届け先選択 -->
+		<h4><span style="
+			background-color: rgba( 128, 128, 128, 0.4 );
+			padding: 0 10px;
+			border-radius: 7px;
+			">お届け先</span></h4>
 
-				<h3>お届け先</h3>
+		<!-- カスタマー本人の住所 -->
+		<h4><%= radio_button_tag(:selected_address,'customer', required: true )  %>　ご自身の住所</h4>
 
-				<label>
-					<%= radio_button_tag(:selected_address,'customer', required: true )  %>
-					ご自身の住所
-				</label>
-				<br />
+			<p style="text-indent: 2em;">〒<%= @customer.postal_code + " " %></p>
+			<p><%= @customer.address %></p><br>
+		    <p style="text-indent: 2em;"><%= @customer.lastname + " " %><%= @customer.firstname %></p><br>
 
-				<p>〒<%= @customer.postal_code.to_s.insert(3, "-") %></p><%= @customer.address %><br>
-				    <%= @customer.lastname + " " %><%= @customer.firstname %><br>
+		<!-- 登録先の住所 -->
+		<h4><%= radio_button_tag(:selected_address,'deliveries', required: true ) %>　登録先住所から選択</h4>
 
+			<div style="text-indent: 2em;"><%= f.select :sub_address, current_customer.deliveries.map { |ship| ["〒" + ship.postal_code + " " + ship.address + " " + ship.name, ship.id] } %></div><br>
 
-				<label>
-					<%= radio_button_tag(:selected_address,'deliveries', required: true )  %>
-
-					登録先住所から選択
-				</label>
-				<br>
-
-				<%= f.select :sub_address, current_customer.deliveries.map { |ship| ship.id }, class: 'col-xs-8' %><br>
-
-
-				<label>
-					<%= radio_button_tag(:selected_address,'new_deliveries', required: true )  %>
-					新しいお届け先
-				</label>
-				<br>
-
-
-				<table class="table">
+		<!-- 新規の住所 -->
+		<h4><%= radio_button_tag(:selected_address,'new_deliveries', required: true ) %>　新しいお届け先</h4>
+			<div class="row col-md-9">
+				<table class="table table-bordered">
 					<tr>
 						<div class="field">
-							<th><%= f.label :郵便番号 %></th>
-							<td><%= f.text_field :postal_code, autocomplete: "postal_code", class: 'col-xs-4' %>ハイフンなし
+							<th class="active"><%= f.label :郵便番号 %></th>
+							<td><%= f.text_field :postal_code, autocomplete: "postal_code", class: 'col-xs-4' %>
+								<p>ハイフンなし</p>
 							</td>
 						</div>
 					</tr>
 
 					<tr>
 						<div class="field">
-							<th class="col-xs-3"><%= f.label :住所 %></th>
+							<th class="active"><%= f.label :住所 %></th>
 							<div class="col-xs-9">
-								<td><%= f.text_field :address,  autocomplete: "address", class: 'col-xs-8' %></td>
+								<td><%= f.text_field :address, autocomplete: "address", class: 'col-md-12' %></td>
 							</div>
 						</div>
 					</tr>
 
 					<tr>
 						<div class="field">
-							<th class="col-xs-3"><%= f.label :宛名 %></th>
+							<th class="active"><%= f.label :宛名 %></th>
 							<div class="col-xs-9">
-								<td><%= f.text_field :name,  autocomplete: "name", class: 'col-xs-6' %></td>
+								<td><%= f.text_field :name, autocomplete: "name", class: 'col-xs-6' %></td>
 							</div>
-
 						</div>
 					</tr>
-
-
-					<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-					<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-					<% end %>
-
-
 				</table>
-				<%= f.submit '確認画面へ進む',class: "btn btn-primary" %>
-
-			<% end %>
+			</div>
+<!-- ここまで -->
+		<div class="row">
+			<%= f.submit '確認画面へ進む',class: "btn btn-primary col-md-offset-4 col-md-3" %>
 		</div>
+	<% end %>
 	</div>
 </div>
-
-
-<!--
-
-      t.integer :customer_id
-      t.integer :shipping_fee
-      t.integer :billing_amount
-      t.integer :payment_method
-      t.string :postal_code
-      t.string :address
-      t.string :name
-      t.integer :status -->

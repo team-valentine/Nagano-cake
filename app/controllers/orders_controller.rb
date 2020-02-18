@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+before_action :authenticate_customer!
   def new
     @order=Order.new
     @customer=current_customer
@@ -21,15 +22,18 @@ def confirm
         @new_address.address = params[:address]
         @new_address.name = params[:name]
         @new_address.customer_id = current_customer.id
-        @new_address.save
-        flash[:notice] = '新しい配送先が保存されました。'
+        if @new_address.save
+            flash[:notice] = '新しい配送先が保存されました。'
+        else
+            redirect_to new_order_path
+            flash[:notice] = '配送先が空欄です。'
+        end
      end
 end
 
 def create
     @order = Order.new(order_params)
     @order.save
-    binding.pry
     current_customer.cart_items.each do |cart_item|
         @order_item = OrderItem.new
         @order_item.order_id = @order.id
