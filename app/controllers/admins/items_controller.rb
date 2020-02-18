@@ -1,4 +1,5 @@
 class Admins::ItemsController < ApplicationController
+before_action :authenticate_admin!
   def top
   end
 
@@ -12,8 +13,11 @@ class Admins::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.save
-    redirect_to admins_items_path
+    if item.save
+      redirect_to admins_items_path, notice: '商品が登録されました。'
+    else
+      redirect_to new_admins_item_path, notice: '空欄があります。'
+    end
   end
 
   def show

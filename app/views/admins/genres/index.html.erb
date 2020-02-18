@@ -2,17 +2,15 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<h2>ジャンル追加・一覧画面</h2>
-
-			<h4>ジャンル</h4>
 				<%= form_for(@genre, url: admins_genres_path(@genre), method: :post ) do |f| %>
 				  <%= f.text_field :name %>
 				  <%= f.radio_button  :status, :true  %>
 				  <%= f.label :status, "有効" %>
-				  <%= f.radio_button  :status, :false　 %>
+				  <%= f.radio_button  :status, :false, {:checked => true} %>
 				  <%= f.label :status, "無効" %>
 				  <%= f.submit "追加" %>
 				<% end %>
-
+			<p id="notice" class="text-warning"><%= notice %></p>
 			<table class="table thead-light">
 				<thead>
 					<tr>
