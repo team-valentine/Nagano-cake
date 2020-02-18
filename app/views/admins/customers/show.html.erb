@@ -10,7 +10,9 @@
 						<td class="col-md-6"><%= @customer.id %>
 						<% if @customer.status == true %>
 						<p class="label label-info" >有効会員</p>
-						<% else @customer.status == false %>
+
+						<% else %>
+
 						<P class="label label-danger" >退会済み
 						<% end %>
 						</td>

@@ -1,7 +1,7 @@
 class Admins::CustomersController < ApplicationController
 before_action :authenticate_admin!
   def index
-  	@customers = Customer.with_deleted.page(params[:page]).per(10)
+    @customers = Customer.with_deleted.page(params[:page]).per(10)
   end
 
   def show

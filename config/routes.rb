@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
 
+
   root 'customers#top'
 
   get "orders/confirm", to: "orders#confirm", as: "confirm"
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :customers, :deliveries, :orders,  :items
   resources :cart_items
   delete 'cart_items_destroy_all' => 'cart_items#destroy_all',as: 'cart_items_destroy_all'
+
 
   namespace :admins do
     resources :customers, :orders, :items, :genres, :order_items

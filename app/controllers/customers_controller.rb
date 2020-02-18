@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
-before_action :authenticate_customer!, except: [:top, :about]
+
+
+  before_action :authenticate_customer!, except: [:top, :about]
+
   def top
   end
 
