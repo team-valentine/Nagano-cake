@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
+before_action :authenticate_customer!
   def index
   	@cart_item =CartItem.new
-
-     @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items
 
   end
   def update
@@ -27,8 +27,10 @@ class CartItemsController < ApplicationController
 
   def create
       @cart_item = CartItem.new(cart_item_params)
-      @cart_item.save
-      redirect_to cart_items_path
+
+        @cart_item.save
+        redirect_to cart_items_path
+
   end
 
 
@@ -37,3 +39,5 @@ class CartItemsController < ApplicationController
   	params.require(:cart_item).permit(:customer_id,:item_id,:quantity)
   end
 end
+
+
