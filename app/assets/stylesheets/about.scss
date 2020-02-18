@@ -1,0 +1,64 @@
+
+.headline{
+  background-color:aliceblue;
+  margin-top:0;
+  width:4em;
+}
+
+.top-visual{
+  width:100%;
+  height:200px;
+  background-image:url(/assets/back-cake2.jpg);
+  background-size:cover;
+  background-position:center;
+}
+
+.top-visual-content{
+  width:40%;
+  height:200px;
+  background-color:rgba(0,0,0,0.5);
+  text-align:center;
+
+}
+
+.top-visual-text{
+  color:#fff;
+  font-size:20px;
+  text-align:center;
+  padding-top:6px
+}
+
+
+.main-visual{
+  height:300px;
+  background-image:url(/assets/order_flow.jpg);
+  background-size:cover;
+  background-position:center;
+}
+
+
+.footer-back{
+  background-color:#8483;
+  width:100%;
+  height:60px;
+}
+
+.about_footer{
+  padding-top:2px;
+  float:left;
+  width:100%;
+}
+
+.footer-text{
+  float:left;
+  padding-right:10px;
+  list-style:none;
+  text-align:left;
+}
+
+
+
+
+
+
+
