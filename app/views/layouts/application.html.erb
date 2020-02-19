@@ -16,7 +16,7 @@
                 <nav class="nav navbar-nav">
                     <h2 class="header-top">ながのCAKE</h2>
                      <% if customer_signed_in? && request.fullpath.index("/admins/") == nil %>
-                          <p style="color:#a9a9a9;">ようこそ、<%= current_customer.lastname %>さん</p>
+                          <p style="color:#fff;">ようこそ、<%= current_customer.lastname %>さん</p>
                       <% end %>
                 </nav>
 

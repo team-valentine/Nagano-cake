@@ -1,13 +1,13 @@
 <div class="container">
 
-	<h2><b>注文詳細画面</b></h2>
+	<h2><b>注文詳細</b></h2>
 
 	<div class="row">
 		<table>
 			<tbody>
 				<tr>
 					<th class="col-md-4"><b>購入者</b></th>
-					<td class="col-md-8"><%= @order.name %></td>
+					<td class="col-md-8"><%= @order.customer.lastname + " " + @order.customer.firstname %></td>
 				</tr>
 				<tr>
 					<th class="col-md-4"><b>配送先</b></th>
@@ -33,7 +33,7 @@
 	<div class="row col-md-8">
 		<table class="table">
 			<thead>
-				<tr class="active">
+				<tr style="background-color: #f5b199">
 					<th class="col-md-3">商品名</th>
 					<th class="col-md-2">単価(税込)</th>
 					<th class="col-md-1">数量</th>
@@ -60,19 +60,19 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="row col-md-3 col-md-offset-1" style="margin-top: 150px;">
-		<table>
+	<div class="row col-md-3 col-md-offset-1">
+		<table class="table table-bordered">
 				<tr>
-					<td><b>商品合計</b></td>
-					<td class="col-md-8"><%= @order.billing_amount - @order.shipping_fee %>円</td>
+					<td style="background-color: #f5b199"><b>商品合計</b></td>
+					<td class="col-md-8 text-center"><%= @order.billing_amount - @order.shipping_fee %>円</td>
 				</tr>
 				<tr>
-					<td><b>送料</b></td>
-					<td class="col-md-8"><%= @order.shipping_fee %>円</td>
+					<td style="background-color: #f5b199"><b>送料</b></td>
+					<td class="col-md-8 text-center"><%= @order.shipping_fee %>円</td>
 				</tr>
 				<tr>
-					<td><b>請求金額合計</b></td>
-					<td class="col-md-8"><%= @order.billing_amount %>円</td>
+					<td style="background-color: #f5b199"><b>請求金額合計</b></td>
+					<td class="col-md-8 text-center"><%= @order.billing_amount %>円</td>
 				</tr>
 			</tbody>
 		</table>

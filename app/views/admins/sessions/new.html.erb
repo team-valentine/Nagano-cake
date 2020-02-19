@@ -9,32 +9,37 @@
   </head>
 
   <body>
+    <div class="wrapper">
+      <header class="navbar navbar-fixed-top">
+        <div class="container">
+          <nav class="nav navbar-nav navbar-left">
+            <h2 class="header-top">ながのCAKE</h2>
+          </nav>
+        </div>
+      </header>
 
-    <header class="navbar navbar-fixed-top">
-      <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-          <h2 class="header-top">ながのCAKE</h2>
-        </nav>
+      <div class="container signup">
+        <%= form_for(Admin.new, url: admin_session_path) do |f| %>
+          <div class="row field">
+            <%= f.label :メールアドレス, class: "col-lg-offset-2 col-lg-2"  %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5" %>
+          </div>
+
+          <div class="row field">
+            <%= f.label :パスワード, class: "col-lg-offset-2 col-lg-2" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "col-lg-5" %>
+          </div>
+
+
+          <div class="row actions">
+            <%= f.submit "ログイン", class: "btn btn-primary col-lg-offset-5 col-lg-2" %>
+          </div>
+        <% end %>
       </div>
-    </header>
-
-<div class="container signup">
-    <%= form_for(Admin.new, url: admin_session_path) do |f| %>
-      <div class="row field">
-        <%= f.label :メールアドレス, class: "col-lg-offset-2 col-lg-2"  %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-5" %>
-      </div>
-
-      <div class="row field">
-        <%= f.label :パスワード, class: "col-lg-offset-2 col-lg-2" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "col-lg-5" %>
-      </div>
-
-
-      <div class="row actions">
-        <%= f.submit "ログイン", class: "btn btn-primary col-lg-offset-5 col-lg-2" %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+    <!-- footer -->
+    　<footer>
+        <h4>Nagano-Cake</h4>
+    　</footer>
   </body>
 </html>

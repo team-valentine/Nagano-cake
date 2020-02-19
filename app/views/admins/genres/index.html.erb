@@ -1,22 +1,22 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-6">
-			<h2>ジャンル追加・一覧画面</h2>
+			<h3>ジャンル追加・一覧</h3>
 				<%= form_for(@genre, url: admins_genres_path(@genre), method: :post ) do |f| %>
 				  <%= f.text_field :name %>
-				  <%= f.radio_button  :status, :true  %>
+				  <%= f.radio_button  :status, :true, :checked => true, :style => 'margin-left: 20px;'  %>
 				  <%= f.label :status, "有効" %>
-				  <%= f.radio_button  :status, :false, {:checked => true} %>
+				  <%= f.radio_button  :status, :false, :style => 'margin-left: 10px;' %>
 				  <%= f.label :status, "無効" %>
-				  <%= f.submit "追加" %>
+				  <%= f.submit "追加", :style => 'margin-left: 10px;' %>
 				<% end %>
 			<p class="text-warning"><%= flash[:genre_success] %><%= flash[:genre_error] %></p>
 			<table class="table thead-light">
 				<thead>
-					<tr>
-					  <th class="col-xs-3 active">ジャンル</<th>
-					  <th class="col-xs-3 active">状態</th>
-					  <th class="col-xs-3 active"></th>
+					<tr style="background-color: #f5b199">
+					  <th class="col-xs-3">ジャンル</<th>
+					  <th class="col-xs-3">状態</th>
+					  <th class="col-xs-3"></th>
 					</tr>
 				</thead>
 				<tbody>
