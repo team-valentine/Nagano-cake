@@ -19,7 +19,7 @@
 					<% sum = 0 %>
 					<% @cart_items.each do |cart_item| %>
 					  	<tr>
-							<td><%= cart_item.item.name  %></td><!-- 商品名 -->
+							<td><%= cart_item.item.name  %></td>
 							<td><%= cart_item.item.price_with_tax %></td>
 							<td><%= cart_item.quantity  %></td>
 							<td><%= cart_item.item.price_with_tax * cart_item.quantity %>
@@ -53,9 +53,6 @@
 			<!-- ここまで -->
 
 
-
-
-
 			<!-- ここから -->
 			<div class="row col-xs-12">
 				<th>支払い方法</th>
@@ -72,7 +69,7 @@
 			    	<%= current_customer.lastname + " " + current_customer.firstname%><br>
 			    	<%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
 			    	<%= f.hidden_field :address, :value => current_customer.address %>
-			    	<%= f.hidden_field :name, :value => current_customer.firstname + current_customer.lastname %>
+			    	<%= f.hidden_field :name, :value => current_customer.lastname + current_customer.firstname %>
 
 			<% elsif params[:selected_address] == 'deliveries' %>
 
@@ -88,7 +85,7 @@
 				<p><%= params[:postal_code] %></p>
 				<p><%= params[:address] %></p>
 				<p><%= params[:name] %></p><br>
-				<p id="notice" class="text-warning"><%= notice %></p>
+				<p class="text-warning"><%= flash[:delivery_success] %></p>
 
 			    <%= f.hidden_field :postal_code, :value => params[:postal_code] %>
 			    <%= f.hidden_field :address, :value => params[:address] %>

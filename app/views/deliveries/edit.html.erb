@@ -1,6 +1,8 @@
 <div class="container">
 	<h3>配送先編集</h3>
 
+	<p class="text-warning row col-md-12"><%= flash[:delivery_error] %>
+
   <div class="row col-md-9">
 	<%= form_for(@delivery, url: delivery_path, method: :patch) do |f| %>
 

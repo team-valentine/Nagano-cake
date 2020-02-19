@@ -8,9 +8,12 @@ before_action :authenticate_admin!
   def create
   	@genre=Genre.new(genre_params)
   	if @genre.save
-  	 redirect_to admins_genres_path, notice: 'ジャンルが追加されました。'
+      @genre.update(genre_params)
+      flash[:genre_success] = "ジャンルが追加されました。"
+  	 redirect_to admins_genres_path
     else
-      redirect_to admins_genres_path, notice: '空欄があります。'
+      flash[:genre_error] = "空欄があります。"
+      redirect_to admins_genres_path
     end
   end
 
@@ -21,9 +24,11 @@ before_action :authenticate_admin!
   def update
   	@genre=Genre.find(params[:id])
     if @genre.update(genre_params)
-     redirect_to admins_genres_path, notice: 'ジャンルが編集されました。'
+      flash[:genre_success] = "ジャンルが編集されました。"
+     redirect_to admins_genres_path
     else
-      redirect_to edit_admins_genre_path, notice: '空欄があります。'
+      flash[:genre_error] = "空欄があります。"
+      redirect_to edit_admins_genre_path
     end
   end
 

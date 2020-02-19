@@ -1,7 +1,7 @@
 <div class="container">
 
 	<h2><b>会員編集画面</b></h2>
-<p id="notice" class="text-warning"><%= notice %></p>
+<p class="text-warning"><%= flash[:customer_error] %></p>
 	<%= form_for(@customer, url: admins_customer_path(@customer),html: {method: :put}) do |f| %>
 
 
