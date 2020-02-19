@@ -5,13 +5,13 @@
 
 			<div class="col-xs-8">
 			<%= form_for(@order, url: orders_path, method: :post) do |f| %>
-			  <table class="table table-borderd">
+			  <table class="table table-bordered">
 				<thead>
 					<tr>
-						<th class="col-xs-3 active">商品名</<th>
-						<th class="col-xs-3 active">単価(税込)</th>
-						<th class="col-xs-3 active">数量</th>
-						<th class="col-xs-3 active">小計</th>
+						<th class="col-xs-3" style="background-color: #f5b199">商品名</<th>
+						<th class="col-xs-3" style="background-color: #f5b199">単価(税込)</th>
+						<th class="col-xs-3" style="background-color: #f5b199">数量</th>
+						<th class="col-xs-3" style="background-color: #f5b199">小計</th>
 					</tr>
 				</thead>
 
@@ -35,17 +35,19 @@
 
 				<!-- ここから  -->
 				<div class="col-xs-4">
-				   <table class="table table-borderd">
+				   <table class="table table-bordered">
 						<tr>
-							<th class="col-xs-3 active">送料</th>
+							<div class="field">
+							<th class="col-xs-3" style="background-color: #f5b199">送料</th>
 							<td class="col-xs-3"><%= @order.shipping_fee %></td>
+						</div>
 						</tr>
 						<tr>
-							<th class="col-xs-3 active">商品合計</th>
+							<th class="col-xs-3" style="background-color: #f5b199">商品合計</th>
 							<td class="col-xs-3"><%= sum %></td>
 						</tr>
 						<tr>
-						    <th class="col-xs-3 active">請求金額</th>
+						    <th class="col-xs-3" style="background-color: #f5b199">請求金額</th>
 						    <td class="col-xs-3"><%= @order.shipping_fee + sum %></td>
 					    </tr>
 				   </table>
@@ -73,7 +75,7 @@
 
 			<% elsif params[:selected_address] == 'deliveries' %>
 
-				〒<%= @delivery.postal_code %>
+				〒<%= @delivery.postal_code.to_s.insert(3, "-") %>
 			　  <%= @delivery.address %><br>
 			    <%= @delivery.name %><br>
 
@@ -82,7 +84,7 @@
 			    <%= f.hidden_field :name, :value => @delivery.name %>
 
 			<% elsif params[:selected_address]== 'new_deliveries' %>
-				<p><%= params[:postal_code] %></p>
+				<p><%= params[:postal_code].to_s.insert(3, "-") %></p>
 				<p><%= params[:address] %></p>
 				<p><%= params[:name] %></p><br>
 				<p class="text-warning"><%= flash[:delivery_success] %></p>

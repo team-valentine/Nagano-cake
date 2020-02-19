@@ -1,12 +1,13 @@
-<div class="panel panel-default" style="margin-top: 20px;">
-	<div class="panel-heading" style="background-color: #FFFFFF">
+<div class="panel panel-default" style="margin-top: 20px; background-color: #ffffdb">
+	<div class="panel-heading" style="background-color: #f5b199">
 		<h4 style="text-align: center;"><b>ジャンル検索</b><h4>
 	</div>
 	<% genres.each do |genre| %>
 	<h4 class="panel-body">
-		<%= link_to items_path(genre_id: genre) do %>
+		<%= link_to items_path(genre_id: genre),:style => "color: #400;" do %>
 		<%= genre.name %>
 		<% end %>
 	</h4>
 	<% end %>
 </div>
+

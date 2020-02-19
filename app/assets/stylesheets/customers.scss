@@ -19,7 +19,7 @@
 .top-image {
 	color: #fff;
 	position: absolute;
-	top: -5%;
+	top: 5%;
 	left: 50%;
 	-ms-transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
@@ -34,14 +34,14 @@
 }
 
 .skippr-cover {
-	color: #ffe4c4;
+	color: #cc5214;
 	letter-spacing: 0.1em;
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 50%;
 	-ms-transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	text-shadow: 3px 4px 5px #808080;
+	text-shadow: 3px 4px 5px #000;
 	font-size: 40px;
 }

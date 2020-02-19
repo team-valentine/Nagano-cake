@@ -16,14 +16,14 @@
 					<th class="col-md-2">氏名</th>
 					<td>
 						<%= f.text_field :lastname, class: 'col-md-3' %>
-						<%= f.text_field :firstname, class: 'col-md-3' %>
+						<%= f.text_field :firstname, class: 'col-md-3', :style => 'margin-left: 20px;' %>
 					</td>
 				</tr>
 				<tr>
 					<th class="col-md-2">フリガナ</th>
 					<td>
 						<%= f.text_field :kana_lastname, class: 'col-md-3' %>
-						<%= f.text_field :kana_firstname, class: 'col-md-3' %>
+						<%= f.text_field :kana_firstname, class: 'col-md-3', :style => 'margin-left: 20px;' %>
 					</td>
 				</tr>
 				<tr>
@@ -47,7 +47,7 @@
 					<th class="col-md-2">会員ステータス</th>
 					<td><%= f.radio_button :status, true, {:checked => true} %>
 						<%= f.label :status, "有効" %>
-						<%= f.radio_button :status, false %>
+						<%= f.radio_button :status, false, :style => 'margin-left: 20px;' %>
 						<%= f.label :status, "退会済み" %>
 					</td>
 				</tr>
