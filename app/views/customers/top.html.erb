@@ -8,63 +8,28 @@
 				<div style="background-image:url(<%= asset_path "pudding2.jpg" %>)"></div>
 				<div style="background-image:url(<%= asset_path "cookie.jpg" %>)"></div>
 		    </div>
-		    <h1 style="
-					color: #ffe4c4;
-					letter-spacing: 0.1em;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-					text-shadow: 3px 4px 5px #808080;
-					font-size: 40px;
-				">Welcome to Nagano Cake</h1>
+		    <h1 class="skippr-cover">Welcome to Nagano Cake</h1>
 
 		</div>
 
 		<div class="row" style="text-align: center; margin-bottom: 30px;">
 		  	<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("cake2.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path, style: 'width: 100%;' %>
-				<h3 class="top-image" style="
-					color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"><b>商品一覧へ</b></h3>
+				<%= link_to image_tag("cake2.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path, style: 'width: 100%;' %>
+				<h3 class="top-image">商品一覧へ</h3>
 	        </div>
 
 			<div style="position: relative;" class="col-md-4">
 
-				<%= link_to image_tag("back-cake.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path(genre_id: 1), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("back-cake.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path(genre_id: 1), style: 'margin-right: 10px; width: 100%;' %>
 
-				<h3 class="top-image" style="
-				    color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"><b>ケーキ</b></h3>
+				<h3 class="top-image"><b>ケーキ</b></h3>
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
 
-				<%= link_to image_tag("baked-cake.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path(genre_id: 2), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("baked-cake.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path(genre_id: 2), style: 'margin-right: 10px; width: 100%;' %>
 
-				<h3 class="top-image" style="
-				    color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"><b>焼き菓子</b></h3>
+				<h3 class="top-image">焼き菓子</h3>
 			</div>
 
 		</div>
@@ -72,49 +37,31 @@
 
 			<div style="position: relative;" class="col-md-4">
 
-				<%= link_to image_tag("pudding.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path(genre_id: 3), style: 'margin-right: 10px; width: 100%;' %>
+				<%= link_to image_tag("pudding.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path(genre_id: 3), style: 'margin-right: 10px; width: 100%;' %>
 
-				<h3 class="top-image" style="
-					color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"><b>プリン</b></h3>
+				<h3 class="top-image">プリン</h3>
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
 
-				<%= link_to image_tag("candy.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path(genre_id: 4), style: 'margin-right: 10px; width: 100%;' %>
-				<h3 class="top-image" style="
-					color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"><b>キャンディ</b></h3>
+				<%= link_to image_tag("candy.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path(genre_id: 4), style: 'margin-right: 10px; width: 100%;' %>
+				<h3 class="top-image">キャンディ</h3>
 			</div>
 
 			<div style="position: relative;" class="col-md-4">
-				<%= link_to image_tag("macaron.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 20px;'), items_path, style: 'margin-right: 10px; width: 100%;' %>
-				<h3 style="
-					color: #333;
-					position: absolute;
-					top: 0%;
-					left: 50%;
-					-ms-transform: translate(-50%, -50%);
-					-webkit-transform: translate(-50%, -50%);
-					transform: translate(-50%, -50%);
-				"></h3>
+				<%= link_to image_tag("macaron.jpg", size: '350x200', alt: "ケーキ画像", style: 'border-radius: 10px;'), items_path(genre_id: 5), style: 'margin-right: 10px; width: 100%;' %>
+				<h3 class="top-image">マカロン</h3>
 			</div>
 		</div>
 	</div>
 </div>
 
+
+
+<% body = capture do %>
+	<span class="glyphicon glyphicon-cog pull-right" aria-hidden="true"></span>
+<% end %>
+<%= link_to body, admins_top_path  %>
 <script>
 //Skipprの初期化
 $("document").ready(function() {

@@ -8,9 +8,11 @@ before_action :authenticate_customer!
   def create
   	delivery = Delivery.new(delivery_params)
   	if delivery.save
-      redirect_to deliveries_path, notice: '配送先が登録されました。'
+      flash[:delivery_success] = "配送先が登録されました。"
+      redirect_to deliveries_path
     else
-      redirect_to deliveries_path, notice: '配送先が空欄です。'
+      flash[:delivery_error] = "配送先が空欄です。"
+      redirect_to deliveries_path
     end
 
   end
@@ -21,13 +23,19 @@ before_action :authenticate_customer!
 
   def update
     delivery = Delivery.find(params[:id])
-    delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if delivery.update(delivery_params)
+      flash[:delivery_edit] = "配送先が編集されました。"
+      redirect_to deliveries_path
+    else
+      flash[:delivery_error] = "配送先が空欄です。"
+      redirect_to edit_delivery_path(delivery)
+    end
   end
 
   def destroy
     delivery = Delivery.find(params[:id])
     delivery.destroy
+    flash[:delivery_delete] = "配送先が削除されました。"
     redirect_to deliveries_path
   end
 

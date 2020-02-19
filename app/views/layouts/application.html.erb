@@ -4,122 +4,43 @@
     <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
 
   <body>
-
-     <header class="navbar navbar-default navbar-fixed-top">
+    <div class="wrapper">
+     <header class="navbar navbar-fixed-top">
           <div class="container">
                 <nav class="nav navbar-nav">
                     <h2 class="header-top">ながのCAKE</h2>
-                     <% if customer_signed_in? %>
-                          <p><%= current_customer.lastname %>さんがログインしています。</p>
+                     <% if customer_signed_in? && request.fullpath.index("/admins/") == nil %>
+                          <p style="color:#a9a9a9;">ようこそ、<%= current_customer.lastname %>さん</p>
                       <% end %>
                 </nav>
 
                 <div class="collapse navbar-collapse" id="Navber">
                    <ul class="nav navbar-nav navbar-right">
+                    <!-- カスタマーがログインしている時のヘッダー -->
                      <% if customer_signed_in? && request.fullpath.index("/admins/") == nil %>
-                        <div class="row">
-                          <li class="list-item col-md-offset-3 col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>HOME</p>
-                            <% end %>
-                            <%= link_to_unless_current body, root_path %>
-                          </li>
-
-                          <li class="list-item col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>ABOUT</p>
-                            <% end %>
-                            <%= link_to_unless_current body, about_path  %>
-                          </li>
-
-                          <li class="list-item col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span>CAKE</p>
-                            <% end %>
-                            <%= link_to_unless_current body, items_path  %>
-                          </li>
-                        </div>
-                        <div class="row">
-                          <li class="list-item col-md-offset-3 col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>CART</p>
-                            <% end %>
-                            <%= link_to_unless_current body, cart_items_path %>
-                          </li>
-
-                          <li class="list-item col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>MYPAGE</p>
-                            <% end %>
-                            <%= link_to_unless_current body, customer_path(current_customer.id) %>
-                          </li>
-
-                          <li class="list-item col-md-3">
-                            <% body = capture do %>
-                              <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>LOGOUT</p>
-                            <% end %>
-                            <%= link_to_unless_current body, destroy_customer_session_path, method: :delete %>
-                          </li>
-
-                        </div>
-
-                     <% elsif admin_signed_in? && request.fullpath.index("/admins/") != nil %>
-
-                        <li class="list-item">
-                          <%= link_to "商品一覧", admins_items_path %>
-                        </li>
-                        <li class="list-item">
-                         <%= link_to "会員一覧", admins_customers_path %>
-                        </li>
-                        <li class="list-item">
-                          <%= link_to "注文履歴一覧", admins_orders_path %>
-                        </li>
-                        <li class="list-item">
-                          <%= link_to "ジャンル管理", admins_genres_path %>
-                        </li>
-
+                        <%= render 'layouts/customer_header' %>
+                    <!-- アドミンがログインしている時のヘッダー -->
+                    <% elsif admin_signed_in? && request.fullpath.index("/admins/").present? %>
+                        <%= render 'layouts/admin_header' %>
+                    <!-- 未ログイン時のデフォルトのヘッダー -->
                      <% else %>
-
-                        <li class="list-item col-md-offset-3 col-md-2">
-                          <% body = capture do %>
-                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>HOME</p>
-                          <% end %>
-                          <%= link_to body, root_path %>
-                        </li>
-
-                        <li class="list-item col-md-2">
-                          <% body = capture do %>
-                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>ABOUT</p>
-                          <% end %>
-                          <%= link_to body, about_path  %>
-                        </li>
-
-                        <li class="list-item col-md-2">
-                          <% body = capture do %>
-                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>LOGIN</p>
-                          <% end %>
-                          <%= link_to body, new_customer_session_path  %>
-                        </li>
-
-                        <li class="list-item col-md-2">
-                          <% body = capture do %>
-                            <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>SIGNUP</p>
-                          <% end %>
-                          <%= link_to body, new_customer_registration_path  %>
-                        </li>
-                       <% end %>
+                        <%= render 'layouts/default_header' %>
+                    　<% end %>
                     </ul>
-                  </div>
-              </div>
+                </div>
+          </div>
        </header>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
+<!-- footer -->
+    　<footer>
+        <h4>Nagano-Cake</h4>
+    　</footer>
   </body>
 </html>

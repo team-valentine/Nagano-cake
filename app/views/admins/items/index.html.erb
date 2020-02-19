@@ -2,7 +2,7 @@
   <div class="row">
     <h3 class="col-md-3"><b>商品一覧画面</b></h3>
   </div>
-  <p id="notice" class="text-warning"><%= notice %></p>
+  <p class="text-warning"><%= flash[:item_success] %></p>
   <div class="row">
       <%= link_to new_admins_item_path, class: 'btn btn-default col-md-offset-10 col-md-1' do %>
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

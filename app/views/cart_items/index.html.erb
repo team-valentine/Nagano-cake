@@ -4,7 +4,7 @@
 
 			<h3 style='margin-bottom: 30px'>ショッピングカート
 			<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger pull-right" %></h3>
-
+		<p class="text-warning"><%= flash[:cart_item_success] %><%= flash[:cart_item_delete] %><%= flash[:cart_item_deleteall] %><%= flash[:cart_item_edit] %></p>
           <div class="row col-md-11 col-md-offset-1">
 			 <table class="table table-bordered ">
 				<thead>

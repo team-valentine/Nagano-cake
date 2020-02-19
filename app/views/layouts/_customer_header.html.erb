@@ -1,0 +1,54 @@
+<!-- カスタマーログイン時のヘッダー -->
+
+<div class="row">
+  <!-- HOME -->
+  <li class="list-item col-md-offset-3 col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>HOME</p>
+    <% end %>
+    <%= link_to body, root_path %>
+  </li>
+
+  <!-- ABOUT -->
+  <li class="list-item col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>ABOUT</p>
+    <% end %>
+    <%= link_to body, about_path  %>
+  </li>
+
+  <!-- CAKE -->
+  <li class="list-item col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span>CAKE</p>
+    <% end %>
+    <%= link_to body, items_path  %>
+  </li>
+</div>
+
+  <!-- CART -->
+<div class="row">
+  <li class="list-item col-md-offset-3 col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>CART</p>
+    <% end %>
+    <%= link_to body, cart_items_path %>
+  </li>
+
+  <!-- MYPAGE -->
+  <li class="list-item col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>MYPAGE</p>
+    <% end %>
+    <%= link_to body, customer_path(current_customer.id) %>
+  </li>
+
+<!-- LOGOUT -->
+  <li class="list-item col-md-3">
+    <% body = capture do %>
+      <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>LOGOUT</p>
+    <% end %>
+    <%= link_to_unless_current body, destroy_customer_session_path, method: :delete %>
+  </li>
+
+</div>

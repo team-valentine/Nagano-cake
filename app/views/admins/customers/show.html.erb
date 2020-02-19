@@ -1,7 +1,7 @@
 <div class="container">
 
 	<h2><b>会員詳細画面</b></h2>
-<p id="notice" class="text-warning"><%= notice %></p>
+<p class="text-warning"><%= flash[:customer_success] %></p>
 	<div class="row">
 		<table class="col-md-offset-1">
 			<tbody>
@@ -35,7 +35,7 @@
 					<tr>
 
 						<th class="col-md-2">郵便番号</th>
-						<td class="col-md-6"><%= @customer.postal_code %></td>
+						<td class="col-md-6"><%= @customer.postal_code.to_s.insert(3, "-") %></td>
 					</tr>
 					<tr>
 

@@ -1,0 +1,52 @@
+
+<div class="row" style="margin-top: 30px;">
+<!-- アドミンログイン時のヘッダー -->
+	<li class="list-item col-md-offset-1 col-md-2">
+	<% body = capture do %>
+	<p>ITEM</p>
+	<% end %>
+	<%= link_to body, admins_items_path %>
+	</li>
+
+	<li class="list-item col-md-2">
+	<% body = capture do %>
+	<p>ADMIN</p>
+	<% end %>
+	<%= link_to body, admins_customers_path %>
+	</li>
+
+	<li class="list-item col-md-2">
+	<% body = capture do %>
+	<p>ORDER</p>
+	<% end %>
+	<%= link_to body, admins_orders_path %>
+	</li>
+
+	<li class="list-item col-md-2">
+	<% body = capture do %>
+	<p>GENRE</p>
+	<% end %>
+	<%= link_to body, admins_genres_path %>
+	</li>
+
+	<!-- ログアウトボタン -->
+	<li class="list-item col-md-3">
+	<% body = capture do %>
+	  <p class="text-center" style="font-size: 15px;"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  LOGOUT</p>
+	<% end %>
+	<%= link_to_unless_current body, destroy_admin_session_path, method: :delete %>
+	</li>
+
+<!-- 検索窓 -->
+	<div class="row">
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-default">
+				<i class='glyphicon glyphicon-search'></i>
+			</button>
+		</form>
+	</div>
+
+</div>

@@ -1,7 +1,7 @@
 <div class="container">
 	<h3 style="margin: 30px 0;">配送先登録・一覧</h3>
 
-	<p id="notice" class="text-warning row col-md-12"><%= notice %></p>
+	<p class="text-warning row col-md-12"><%= flash[:delivery_error] %><%= flash[:delivery_success] %><%= flash[:delivery_edit] %><%= flash[:delivery_delete] %></p>
 
   <div class="row col-md-9">
 	<%= form_for(@delivery, url: deliveries_path, method: :post) do |f| %>

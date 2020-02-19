@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="col-xs-12">
 		<h3>購入情報入力</h3>
-			<p id="notice" class="text-warning"><%= notice %></p>
+			<p class="text-warning"><%= flash[:delivery_error] %></p>
 
 	<%= form_with url: confirm_path, method: :get,local: true do |f| %>
 <!-- ↓支払い方法選択 -->
@@ -27,14 +27,25 @@
 		<!-- カスタマー本人の住所 -->
 		<h4><%= radio_button_tag(:selected_address,'customer', required: true )  %>　ご自身の住所</h4>
 
-			<p style="text-indent: 2em;">〒<%= @customer.postal_code + " " %></p>
+			<p style="text-indent: 2em;">〒<%= @customer.postal_code.to_s.insert(3, "-") + " " %></p>
 			<p><%= @customer.address %></p><br>
 		    <p style="text-indent: 2em;"><%= @customer.lastname + " " %><%= @customer.firstname %></p><br>
 
 		<!-- 登録先の住所 -->
+		<% if @customer.deliveries.count == 0 %>
+
+		<h4>登録先住所から選択</h4>
+
+		<p class="text-warning">配送先が登録されていません。</p>
+
+		<% else %>
 		<h4><%= radio_button_tag(:selected_address,'deliveries', required: true ) %>　登録先住所から選択</h4>
 
-			<div style="text-indent: 2em;"><%= f.select :sub_address, current_customer.deliveries.map { |ship| ["〒" + ship.postal_code + " " + ship.address + " " + ship.name, ship.id] } %></div><br>
+
+			<div style="text-indent: 2em;"><%= f.select :sub_address, current_customer.deliveries.map { |ship| ["〒" + ship.postal_code.to_s.insert(3, "-") + " " + ship.address + " " + ship.name, ship.id] } %></div><br>
+
+		<% end %>
+
 
 
 		<!-- 新規の住所 -->

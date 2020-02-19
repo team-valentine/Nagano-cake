@@ -10,7 +10,7 @@
 				  <%= f.label :status, "無効" %>
 				  <%= f.submit "追加" %>
 				<% end %>
-			<p id="notice" class="text-warning"><%= notice %></p>
+			<p class="text-warning"><%= flash[:genre_success] %><%= flash[:genre_error] %></p>
 			<table class="table thead-light">
 				<thead>
 					<tr>

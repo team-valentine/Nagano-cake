@@ -14,11 +14,11 @@
 				</tr>
 				<tr>
 					<td class="active">カナ</td>
-					<td colspan="2"><%= @customer.kana_lastname %>  </td>
+					<td colspan="2"><%= @customer.kana_lastname %><%= @customer.kana_firstname %></td>
 				</tr>
 				<tr>
 					<td class="active">郵便番号</td>
-					<td colspan="2"><%= @customer.postal_code %></td>
+					<td colspan="2"><%= @customer.postal_code.to_s.insert(3, "-") %></td>
 				</tr>
 				<tr>
 					<td class="active">住所</td>

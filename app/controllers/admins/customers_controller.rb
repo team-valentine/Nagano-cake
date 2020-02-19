@@ -14,16 +14,21 @@ before_action :authenticate_admin!
 
   def update
   	@customer = Customer.with_deleted.find(params[:id])
-    @customer.update(customer_params)
+    if @customer.update(customer_params)
+      flash[:customer_success] = "会員情報が編集されました。"
 
-    if @customer.status == false
-      @customer.destroy
-      redirect_to admins_customer_path, notice: '会員情報が編集されました。'
-    elsif  @customer.status == true
-      @customer.restore
-      redirect_to admins_customer_path, notice: '会員情報が編集されました。'
+      if @customer.status == false
+        @customer.destroy
+        redirect_to admins_customer_path
+      elsif  @customer.status == true
+        @customer.restore
+        redirect_to admins_customer_path
+      end
+
     else
-      redirect_to edit_admins_customer_path, notice: '空欄があります。'
+      flash[:customer_error] = "空欄があります。"
+      redirect_to edit_admins_customer_path
+
     end
 
   end

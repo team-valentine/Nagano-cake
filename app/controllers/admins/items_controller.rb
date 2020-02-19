@@ -15,9 +15,11 @@ before_action :authenticate_admin!
   def create
     item = Item.new(item_params)
     if item.save
-      redirect_to admins_items_path, notice: '商品が登録されました。'
+      flash[:item_success] = "商品が登録されました。"
+      redirect_to admins_items_path
     else
-      redirect_to new_admins_item_path, notice: '空欄があります。'
+      flash[:item_error] = "空欄があります。"
+      redirect_to new_admins_item_path
     end
   end
 

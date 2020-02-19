@@ -23,10 +23,10 @@ def confirm
         @new_address.name = params[:name]
         @new_address.customer_id = current_customer.id
         if @new_address.save
-            flash[:notice] = '新しい配送先が保存されました。'
+            flash[:delivery_success] = "新しい配送先が保存されました。"
         else
+            flash[:delivery_error] = "配送先が空欄です。"
             redirect_to new_order_path
-            flash[:notice] = '配送先が空欄です。'
         end
      end
 end
